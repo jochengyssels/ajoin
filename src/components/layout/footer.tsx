@@ -19,6 +19,7 @@ export async function Footer() {
       links: [
         { href: `/products/${SHAMPOO_SLUG}`, label: nav("product") },
         { href: "/ingredients", label: nav("ingredients") },
+        { href: "/science", label: nav("science") },
         { href: "/about", label: nav("about") },
         { href: "/blog", label: nav("blog") },
       ],

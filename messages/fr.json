@@ -19,7 +19,8 @@
     "skip": "Aller au contenu",
     "language": "Langue",
     "home": "Accueil Ajoin & Shine",
-    "product": "Le shampooing"
+    "product": "Le shampooing",
+    "science": "La science"
   },
   "sample": "Aperçu : la boutique ouvre bientôt. Vous pouvez tout découvrir, mais pas encore commander.",
   "home": {
@@ -31,7 +32,7 @@
     "bestsellerCta": "Découvrir le shampooing",
     "whyTitle": "Pourquoi l’oignon ?",
     "whyBody": "À Alost, l’oignon est un surnom, une mascotte et, au carnaval, une pluie qui tombe sur la Grand-Place. Nous l’avons mis dans un flacon que vous aurez envie d’utiliser tous les jours.",
-    "whyCta": "En savoir plus sur les ingrédients",
+    "whyCta": "Ce que dit la science sur l’oignon et les cheveux",
     "howTitle": "Mode d’emploi",
     "howSteps": {
       "one": "Mouillez vos cheveux et massez une petite quantité sur le cuir chevelu.",
@@ -273,7 +274,8 @@
     "privacy": "Politique de confidentialité",
     "shipping": "Livraison et retours",
     "notice": "Mentions légales",
-    "draftNotice": "Brouillon : cette page contient des éléments provisoires et est en attente de validation juridique."
+    "draftNotice": "Brouillon : cette page contient des éléments provisoires et est en attente de validation juridique.",
+    "science": "La science"
   },
   "countries": {
     "BE": "Belgique",

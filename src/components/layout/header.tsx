@@ -12,6 +12,7 @@ import { SHAMPOO_SLUG } from "../../../content/catalogue/products";
 const links = [
   { href: `/products/${SHAMPOO_SLUG}`, key: "product" },
   { href: "/ingredients", key: "ingredients" },
+  { href: "/science", key: "science" },
   { href: "/about", key: "about" },
   { href: "/blog", key: "blog" },
 ] as const;

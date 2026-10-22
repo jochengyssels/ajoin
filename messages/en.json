@@ -19,7 +19,8 @@
     "skip": "Skip to content",
     "language": "Language",
     "home": "Ajoin & Shine home",
-    "product": "The shampoo"
+    "product": "The shampoo",
+    "science": "The science"
   },
   "sample": "Preview: the shop opens soon. You can browse everything, but ordering isn't possible yet.",
   "home": {
@@ -31,7 +32,7 @@
     "bestsellerCta": "Discover the shampoo",
     "whyTitle": "Why onion?",
     "whyBody": "In Aalst the onion is a nickname, a mascot and, at carnival, something that rains down on the Grote Markt. We put it in a bottle you’ll want to use every day.",
-    "whyCta": "Read about the ingredients",
+    "whyCta": "What science says about onion and hair",
     "howTitle": "How to use it",
     "howSteps": {
       "one": "Wet your hair and massage a small amount into the scalp.",
@@ -273,7 +274,8 @@
     "privacy": "Privacy policy",
     "shipping": "Shipping & returns",
     "notice": "Legal notice",
-    "draftNotice": "Draft: this page contains placeholders and is awaiting legal review."
+    "draftNotice": "Draft: this page contains placeholders and is awaiting legal review.",
+    "science": "The science"
   },
   "countries": {
     "BE": "Belgium",

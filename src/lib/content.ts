@@ -5,6 +5,7 @@ import type { Locale } from "@/i18n/routing";
 export const contentPages = {
   about: { titleKey: "about", legal: false },
   ingredients: { titleKey: "ingredients", legal: false },
+  science: { titleKey: "science", legal: false },
   faq: { titleKey: "faq", legal: false },
   terms: { titleKey: "terms", legal: true },
   privacy: { titleKey: "privacy", legal: true },

@@ -19,7 +19,8 @@
     "skip": "Vai al contenuto",
     "language": "Lingua",
     "home": "Home Ajoin & Shine",
-    "product": "Lo shampoo"
+    "product": "Lo shampoo",
+    "science": "La scienza"
   },
   "sample": "Anteprima: il negozio apre presto. Puoi guardare tutto, ma non ancora ordinare.",
   "home": {
@@ -31,7 +32,7 @@
     "bestsellerCta": "Scopri lo shampoo",
     "whyTitle": "Perché la cipolla?",
     "whyBody": "Ad Aalst la cipolla è un soprannome, una mascotte e, a carnevale, qualcosa che piove sulla Grote Markt. L’abbiamo messa in un flacone che vorrai usare ogni giorno.",
-    "whyCta": "Scopri gli ingredienti",
+    "whyCta": "Cosa dice la scienza su cipolla e capelli",
     "howTitle": "Come si usa",
     "howSteps": {
       "one": "Bagna i capelli e massaggia una piccola quantità sul cuoio capelluto.",
@@ -273,7 +274,8 @@
     "privacy": "Informativa sulla privacy",
     "shipping": "Spedizioni e resi",
     "notice": "Note legali",
-    "draftNotice": "Bozza: questa pagina contiene testi provvisori ed è in attesa di revisione legale."
+    "draftNotice": "Bozza: questa pagina contiene testi provvisori ed è in attesa di revisione legale.",
+    "science": "La scienza"
   },
   "countries": {
     "BE": "Belgio",

@@ -19,7 +19,8 @@
     "skip": "Naar de inhoud",
     "language": "Taal",
     "home": "Ajoin & Shine startpagina",
-    "product": "De shampoo"
+    "product": "De shampoo",
+    "science": "De wetenschap"
   },
   "sample": "Voorproefje: de webshop opent binnenkort. Je kunt alles bekijken, maar nog niet bestellen.",
   "home": {
@@ -31,7 +32,7 @@
     "bestsellerCta": "Ontdek de shampoo",
     "whyTitle": "Waarom ajuin?",
     "whyBody": "In Aalst is de ajuin een bijnaam, een mascotte en met carnaval iets dat op de Grote Markt naar beneden regent. Wij stopten hem in een fles die je elke dag wilt gebruiken.",
-    "whyCta": "Lees meer over de ingrediënten",
+    "whyCta": "Wat de wetenschap zegt over ajuin en haar",
     "howTitle": "Zo gebruik je het",
     "howSteps": {
       "one": "Maak je haar nat en masseer een kleine hoeveelheid in de hoofdhuid.",
@@ -273,7 +274,8 @@
     "privacy": "Privacybeleid",
     "shipping": "Verzending en retour",
     "notice": "Juridische informatie",
-    "draftNotice": "Concept: deze pagina bevat tijdelijke tekst en wacht op juridische controle."
+    "draftNotice": "Concept: deze pagina bevat tijdelijke tekst en wacht op juridische controle.",
+    "science": "De wetenschap"
   },
   "countries": {
     "BE": "België",

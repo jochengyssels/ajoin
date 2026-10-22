@@ -96,7 +96,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           </h2>
           <div>
             <p className="max-w-[60ch] text-lg">{t("whyBody")}</p>
-            <ButtonLink href="/ingredients" variant="ghost" className="mt-6">
+            <ButtonLink href="/science" variant="ghost" className="mt-6">
               {t("whyCta")}
             </ButtonLink>
           </div>
