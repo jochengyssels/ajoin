@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import { routing, type Locale } from "@/i18n/routing";
 import { catalogue } from "@/lib/catalogue";
 import { catalogueHasPlaceholders } from "@/lib/catalogue/readiness";
+import { isShowcase } from "@/lib/showcase";
 import { alternates } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { freeShippingThresholdCents } from "../../../content/shipping";
@@ -63,7 +64,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         </a>
         <NextIntlClientProvider>
           <CartProvider snapshot={{ products, bundles, plans }} freeShippingThresholdCents={freeShippingThresholdCents}>
-            {catalogueHasPlaceholders() && (
+            {(isShowcase() || catalogueHasPlaceholders()) && (
               <p className="bg-paper px-4 py-2 text-center text-xs font-medium text-ink">{sample("sample")}</p>
             )}
             <Header />

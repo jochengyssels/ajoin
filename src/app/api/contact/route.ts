@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { sendContactMessage } from "@/lib/email";
+import { showcaseResponse } from "@/lib/showcase";
 import { readJson, zEmail } from "@/lib/api";
 
 const Body = z.object({
@@ -12,6 +13,7 @@ const Body = z.object({
 });
 
 export async function POST(req: Request) {
+  if (!process.env.RESEND_API_KEY || !process.env.CONTACT_TO_EMAIL) return showcaseResponse();
   const parsed = Body.safeParse(await readJson(req));
   if (!parsed.success) return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   if (parsed.data.company) return NextResponse.json({ ok: true });

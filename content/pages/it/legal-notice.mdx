@@ -1,0 +1,23 @@
+import { site } from "@/lib/site";
+
+# Note legali
+
+Questo sito web è gestito da:
+
+**{site.company.name}**<br />
+{site.company.address}<br />
+Numero d'impresa (KBO/BCE): {site.company.enterpriseNumber}<br />
+Partita IVA: {site.company.vat}<br />
+Email: {site.company.email}<br />
+Telefono: {site.company.phone}
+
+{/* TODO_BRAND: register of legal entities (RPR/RPM) and court, if the business is a company. */}
+
+## Persona responsabile per i cosmetici
+
+{site.responsiblePerson.name}<br />
+{site.responsiblePerson.address}
+
+## Design e contenuti
+
+Logo, mascotte e testi © {site.company.name}. Tutti i diritti riservati.

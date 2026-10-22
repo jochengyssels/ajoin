@@ -5,7 +5,7 @@ import { useId, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 
-type State = "idle" | "pending" | "done" | "error";
+type State = "idle" | "pending" | "done" | "error" | "showcase";
 
 export function NewsletterForm({ dark = false }: { dark?: boolean }) {
   const t = useTranslations("newsletter");
@@ -23,7 +23,8 @@ export function NewsletterForm({ dark = false }: { dark?: boolean }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: form.get("email"), locale, company: form.get("company") }),
       });
-      setState(res.ok ? "done" : "error");
+      if (res.status === 503) setState("showcase");
+      else setState(res.ok ? "done" : "error");
     } catch {
       setState("error");
     }
@@ -63,6 +64,11 @@ export function NewsletterForm({ dark = false }: { dark?: boolean }) {
           {state === "pending" ? t("pending") : t("submit")}
         </Button>
       </div>
+      {state === "showcase" && (
+        <p role="status" className={`mt-2 text-sm font-semibold ${dark ? "text-paper" : "text-onion"}`}>
+          {t("showcase")}
+        </p>
+      )}
       {state === "error" && (
         <p role="alert" className={`mt-2 text-sm ${dark ? "text-paper" : "text-danger"}`}>
           {t("error")}

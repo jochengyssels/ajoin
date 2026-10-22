@@ -20,7 +20,7 @@
     "language": "Taal",
     "home": "Ajoin & Shine startpagina"
   },
-  "sample": "Testshop: producten en prijzen zijn voorbeelden en er worden geen echte betalingen verwerkt.",
+  "sample": "Voorproefje: de webshop opent binnenkort. Je kunt alles bekijken, maar nog niet bestellen.",
   "home": {
     "heroTitle": "Elke dag carnaval in je haar.",
     "heroBody": "Shampoo, conditioner en haarolie met ajuinextract. Gemaakt in de geest van Aalst, waar ze al generaties de Ajuinen heten.",
@@ -55,7 +55,8 @@
     "confirmedTitle": "Je bent ingeschreven",
     "confirmedBody": "Bedankt voor je bevestiging. Je hoort snel van ons.",
     "invalidTitle": "Deze link is verlopen",
-    "invalidBody": "Schrijf je opnieuw in, dan sturen we je een nieuwe bevestigingslink."
+    "invalidBody": "Schrijf je opnieuw in, dan sturen we je een nieuwe bevestigingslink.",
+    "showcase": "Inschrijven kan zodra de webshop opent. Kom snel terug."
   },
   "shop": {
     "title": "Shop",
@@ -143,7 +144,8 @@
     "shippingCost": "Verzending",
     "shippingFree": "Gratis",
     "total": "Geschat totaal",
-    "mixedIntervals": "Abonnementen in één bestelling moeten hetzelfde leverritme hebben. Pas er een aan en probeer opnieuw."
+    "mixedIntervals": "Abonnementen in één bestelling moeten hetzelfde leverritme hebben. Pas er een aan en probeer opnieuw.",
+    "showcase": "We nemen nog geen bestellingen aan. De webshop opent binnenkort, dus hou je winkelmandje bij en kom terug."
   },
   "checkout": {
     "successTitle": "Bedankt voor je bestelling",
@@ -197,7 +199,13 @@
     "doneBody": "We stuurden je een ontvangstbevestiging met datum en uur per e-mail. Daarin staan ook de instructies om terug te sturen.",
     "notFound": "We vonden geen bestelling met dat e-mailadres en bestelnummer.",
     "error": "Er ging iets mis. Probeer het opnieuw of stuur ons een e-mail.",
-    "formLink": "Liever op papier? Download het modelformulier voor herroeping."
+    "formLink": "Liever op papier? Download het modelformulier voor herroeping.",
+    "modelTitle": "Modelformulier voor herroeping",
+    "modelIntro": "Liever zelf schrijven? Kopieer dit formulier in een e-mail of brief, vul het in en stuur het naar ons.",
+    "modelTo": "Aan:",
+    "modelBody": "Ik/Wij (*) deel/delen (*) u hierbij mede dat ik/wij (*) onze overeenkomst betreffende de verkoop van de volgende goederen/levering van de volgende dienst (*) herroep/herroepen (*):",
+    "modelLines": "Besteld op (*)/Ontvangen op (*)|Naam/Namen consument(en)|Adres consument(en)|Handtekening van consument(en) (alleen wanneer dit formulier op papier wordt ingediend)|Datum",
+    "modelNote": "(*) Doorhalen wat niet van toepassing is."
   },
   "contact": {
     "title": "Contact",
@@ -235,7 +243,8 @@
   },
   "form": {
     "required": "Verplicht",
-    "invalidEmail": "Vul een geldig e-mailadres in."
+    "invalidEmail": "Vul een geldig e-mailadres in.",
+    "showcase": "Dit formulier werkt zodra de webshop opent. Tot dan kun je ons mailen."
   },
   "errors": {
     "notFoundTitle": "Deze pagina is verdwenen",
@@ -294,5 +303,12 @@
     "withdrawalTitle": "We hebben je herroeping ontvangen",
     "withdrawalBody": "We ontvingen je herroeping voor bestelling {number} op {date}.",
     "withdrawalReturn": "TODO_BRAND: return address and instructions. We refund within 14 days of receiving your withdrawal, once the goods are back or you've shown they were sent."
+  },
+  "shippingTable": {
+    "country": "Land",
+    "cost": "Verzending",
+    "time": "Levertijd",
+    "days": "{min} tot {max} werkdagen",
+    "free": "Gratis verzending vanaf {amount}."
   }
 }

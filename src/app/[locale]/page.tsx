@@ -120,7 +120,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               </li>
             ))}
           </ol>
-          <p className="mt-8 text-xs text-flesh/60">{t("howNote")}</p>
         </Container>
       </section>
 

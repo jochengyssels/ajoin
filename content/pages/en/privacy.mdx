@@ -1,0 +1,47 @@
+import { site } from "@/lib/site";
+
+{/* TODO_LEGAL_REVIEW: drafted GDPR privacy policy. Check processors, retention and wording before launch. */}
+
+# Privacy policy
+
+## Who is responsible
+
+{site.company.name}, {site.company.address}, enterprise number {site.company.enterpriseNumber}, is the controller of your personal data. Contact us about privacy at {site.company.email}.
+
+## What we collect and why
+
+| Data | Purpose | Legal basis | Kept for |
+| --- | --- | --- | --- |
+| Name, email, shipping and billing address, order contents | Processing and delivering your order, customer service | Contract (Art. 6(1)(b) GDPR) | 10 years for accounting records, as required by Belgian law |
+| Payment data | Payment, fraud prevention | Contract and legal obligation | Handled by Stripe; we never store card details |
+| Email address (newsletter) | Sending the newsletter after you confirm | Consent (Art. 6(1)(a)) | Until you unsubscribe |
+| Contact form messages | Answering your question | Legitimate interest (Art. 6(1)(f)) | 2 years after the last contact |
+| Withdrawal requests | Handling your withdrawal | Legal obligation (Art. 6(1)(c)) | As long as the order record |
+
+
+## Who we share it with
+
+We use these processors, each under a data processing agreement:
+
+- **Stripe** (payments)
+- **Vercel** (website hosting)
+- **Neon** (order database, EU region)
+- **Resend** (sending emails)
+{/* TODO_BRAND: when analytics is switched on, add the tool here and a row in the table above. */}
+- **Our carrier** {/* TODO_BRAND: name the carrier(s) */}, who receive your name and shipping address to deliver your parcel
+
+Some of these providers are based in the United States. Transfers rely on the EU–US Data Privacy Framework or standard contractual clauses.
+
+We never sell your data.
+
+## Cookies
+
+We set one cookie that stores your cookie choice, and use your browser's local storage to keep your cart. Both are needed for the shop to work. Analytics only load after you allow them. You can change your choice at any time through "Cookie settings" at the bottom of every page.
+
+## Your rights
+
+You have the right to access, rectify and erase your data, to restrict or object to processing, and to data portability. Where processing is based on consent, you can withdraw it at any time. Write to {site.company.email}.
+
+You can lodge a complaint with the Belgian Data Protection Authority (Gegevensbeschermingsautoriteit / Autorité de protection des données, dataprotectionauthority.be) or with the authority in your country.
+
+*Last updated: 22 October 2026 {/* TODO_LEGAL_REVIEW: update on publication */}.*

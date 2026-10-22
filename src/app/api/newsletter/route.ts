@@ -4,12 +4,14 @@ import { db, schema } from "@/lib/db";
 import { sendNewsletterConfirm } from "@/lib/email";
 import { site } from "@/lib/site";
 import { newToken } from "@/lib/tokens";
+import { formsEnabled, showcaseResponse } from "@/lib/showcase";
 import { readJson, zEmail, zLocale } from "@/lib/api";
 
 const Body = z.object({ email: zEmail, locale: zLocale, company: z.string().optional().nullable() });
 
 /** Step one of double opt-in: store as pending and email a confirmation link. */
 export async function POST(req: Request) {
+  if (!formsEnabled()) return showcaseResponse();
   const parsed = Body.safeParse(await readJson(req));
   if (!parsed.success) return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   const { email, locale, company } = parsed.data;

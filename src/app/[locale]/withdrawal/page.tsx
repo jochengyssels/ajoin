@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
+import { pub, site } from "@/lib/site";
 import { SimplePage } from "@/components/layout/simple-page";
 import { ApiForm } from "@/components/forms/api-form";
 
@@ -38,12 +39,28 @@ export default async function WithdrawalPage({ params }: PageProps<"/[locale]/wi
         errorMessage={t("error")}
         errorMessages={{ not_found: t("notFound") }}
         requiredLabel={f("required")}
+        showcaseMessage={f("showcase")}
       />
-      <p className="mt-10 max-w-lg text-sm">
-        <a href={`/legal/withdrawal-form-${locale}.pdf`} className="underline underline-offset-2">
-          {t("formLink")}
-        </a>
-      </p>
+      <section aria-labelledby="model-form" className="mt-16 max-w-xl rounded-card border border-line bg-white p-6">
+        <h2 id="model-form" className="text-2xl">
+          {t("modelTitle")}
+        </h2>
+        <p className="mt-2 text-sm text-muted">{t("modelIntro")}</p>
+        <div className="mt-5 space-y-3 text-sm leading-relaxed">
+          <p>
+            {t("modelTo")} {[pub(site.company.name) ?? site.name, pub(site.company.address), pub(site.company.email)].filter(Boolean).join(", ")}
+          </p>
+          <p>{t("modelBody")}</p>
+          <ul className="space-y-2">
+            {t("modelLines")
+              .split("|")
+              .map((line) => (
+                <li key={line}>— {line}: ……………………</li>
+              ))}
+          </ul>
+          <p className="text-muted">{t("modelNote")}</p>
+        </div>
+      </section>
     </SimplePage>
   );
 }

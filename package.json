@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "e2e": "playwright test",
     "db:push": "drizzle-kit push",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "vercel-build": "node scripts/migrate.mjs && next build"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

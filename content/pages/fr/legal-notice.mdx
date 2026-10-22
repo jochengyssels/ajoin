@@ -1,0 +1,23 @@
+import { site } from "@/lib/site";
+
+# Mentions légales
+
+Ce site web est exploité par :
+
+**{site.company.name}**<br />
+{site.company.address}<br />
+Numéro d'entreprise (BCE/KBO) : {site.company.enterpriseNumber}<br />
+TVA : {site.company.vat}<br />
+E-mail : {site.company.email}<br />
+Téléphone : {site.company.phone}
+
+{/* TODO_BRAND: register of legal entities (RPR/RPM) and court, if the business is a company. */}
+
+## Personne responsable (cosmétiques)
+
+{site.responsiblePerson.name}<br />
+{site.responsiblePerson.address}
+
+## Conception et contenu
+
+Logo, mascotte et textes © {site.company.name}. Tous droits réservés.

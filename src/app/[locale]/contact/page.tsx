@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { pub, site } from "@/lib/site";
 import { SimplePage } from "@/components/layout/simple-page";
 import { ApiForm } from "@/components/forms/api-form";
 
@@ -33,14 +33,27 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
           success={<p>{t("sent")}</p>}
           errorMessage={t("error")}
           requiredLabel={f("required")}
+          showcaseMessage={f("showcase")}
         />
-        <address className="not-italic text-sm leading-relaxed">
-          <strong>{site.company.name}</strong>
-          <br />
-          {site.company.address}
-          <br />
-          {site.company.email}
-        </address>
+        {pub(site.company.name) && (
+          <address className="not-italic text-sm leading-relaxed">
+            <strong>{site.company.name}</strong>
+            {pub(site.company.address) && (
+              <>
+                <br />
+                {site.company.address}
+              </>
+            )}
+            {pub(site.company.email) && (
+              <>
+                <br />
+                <a href={`mailto:${site.company.email}`} className="underline">
+                  {site.company.email}
+                </a>
+              </>
+            )}
+          </address>
+        )}
       </div>
     </SimplePage>
   );

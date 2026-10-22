@@ -31,6 +31,7 @@ export default async function OrdersPage({ params, searchParams }: PageProps<"/[
         success={<p>{t("sent")}</p>}
         errorMessage={t("error")}
         requiredLabel={f("required")}
+        showcaseMessage={f("showcase")}
       />
     </SimplePage>
   );

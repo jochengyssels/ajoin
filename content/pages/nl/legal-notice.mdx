@@ -1,0 +1,23 @@
+import { site } from "@/lib/site";
+
+# Wettelijke vermeldingen
+
+Deze website wordt uitgebaat door:
+
+**{site.company.name}**<br />
+{site.company.address}<br />
+Ondernemingsnummer (KBO/BCE): {site.company.enterpriseNumber}<br />
+Btw: {site.company.vat}<br />
+E-mail: {site.company.email}<br />
+Telefoon: {site.company.phone}
+
+{/* TODO_BRAND: register of legal entities (RPR/RPM) and court, if the business is a company. */}
+
+## Verantwoordelijke persoon cosmetica
+
+{site.responsiblePerson.name}<br />
+{site.responsiblePerson.address}
+
+## Ontwerp en inhoud
+
+Logo, mascotte en teksten © {site.company.name}. Alle rechten voorbehouden.

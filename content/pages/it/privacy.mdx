@@ -1,0 +1,47 @@
+import { site } from "@/lib/site";
+
+{/* TODO_LEGAL_REVIEW: drafted GDPR privacy policy. Check processors, retention and wording before launch. */}
+
+# Informativa sulla privacy
+
+## Chi è il titolare
+
+{site.company.name}, {site.company.address}, numero d'impresa {site.company.enterpriseNumber}, è il titolare del trattamento dei tuoi dati personali. Per questioni di privacy puoi contattarci all'indirizzo {site.company.email}.
+
+## Quali dati raccogliamo e perché
+
+| Dati | Finalità | Base giuridica | Conservazione |
+| --- | --- | --- | --- |
+| Nome, email, indirizzo di spedizione e di fatturazione, contenuto dell'ordine | Gestione e consegna del tuo ordine, assistenza clienti | Contratto (Art. 6(1)(b) GDPR) | 10 anni per le scritture contabili, come previsto dalla legge belga |
+| Dati di pagamento | Pagamento, prevenzione delle frodi | Contratto e obbligo legale | Gestiti da Stripe; non conserviamo mai i dati della carta |
+| Indirizzo email (newsletter) | Invio della newsletter dopo la tua conferma | Consenso (Art. 6(1)(a)) | Fino alla disiscrizione |
+| Messaggi del modulo di contatto | Rispondere alla tua domanda | Legittimo interesse (Art. 6(1)(f)) | 2 anni dall'ultimo contatto |
+| Richieste di recesso | Gestione del tuo recesso | Obbligo legale (Art. 6(1)(c)) | Per la stessa durata del record dell'ordine |
+
+
+## Con chi li condividiamo
+
+Ci avvaliamo dei seguenti responsabili del trattamento, ciascuno vincolato da un accordo sul trattamento dei dati:
+
+- **Stripe** (pagamenti)
+- **Vercel** (hosting del sito)
+- **Neon** (database degli ordini, regione UE)
+- **Resend** (invio delle email)
+{/* TODO_BRAND: when analytics is switched on, add the tool here and a row in the table above. */}
+- **Il nostro corriere** {/* TODO_BRAND: name the carrier(s) */}, che ricevono il tuo nome e l'indirizzo di spedizione per consegnare il pacco
+
+Alcuni di questi fornitori hanno sede negli Stati Uniti. I trasferimenti si basano sul quadro UE-USA per la protezione dei dati (Data Privacy Framework) o su clausole contrattuali tipo.
+
+Non vendiamo mai i tuoi dati.
+
+## Cookie
+
+Impostiamo un solo cookie, che memorizza la tua scelta sui cookie, e usiamo la memoria locale del tuo browser per conservare il carrello. Entrambi sono necessari per il funzionamento dello shop. Gli strumenti di analisi si caricano solo dopo che li hai autorizzati. Puoi modificare la tua scelta in qualsiasi momento tramite "Impostazioni cookie" in fondo a ogni pagina.
+
+## I tuoi diritti
+
+Hai il diritto di accesso, rettifica e cancellazione dei tuoi dati, di limitazione e di opposizione al trattamento, e alla portabilità dei dati. Se il trattamento si basa sul consenso, puoi revocarlo in qualsiasi momento. Scrivi a {site.company.email}.
+
+Puoi proporre reclamo all'Autorità belga per la protezione dei dati (Gegevensbeschermingsautoriteit / Autorité de protection des données, dataprotectionauthority.be) o all'autorità del tuo Paese.
+
+*Ultimo aggiornamento: 22 ottobre 2026 {/* TODO_LEGAL_REVIEW: update on publication */}.*

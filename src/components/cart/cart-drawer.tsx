@@ -48,7 +48,8 @@ export function CartDrawer() {
       if (!res.ok || !data.url) throw new Error(data.error ?? "checkout_failed");
       window.location.assign(data.url);
     } catch (e) {
-      setError(e instanceof Error && e.message === "mixed_intervals" ? t("mixedIntervals") : t("checkoutError"));
+      const code = e instanceof Error ? e.message : "";
+      setError(code === "showcase" ? t("showcase") : code === "mixed_intervals" ? t("mixedIntervals") : t("checkoutError"));
       setCheckingOut(false);
     }
   }

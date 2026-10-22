@@ -5,7 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { catalogue } from "@/lib/catalogue";
 import { absoluteUrl, pageMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { pub, site } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { Gallery } from "@/components/product/gallery";
 import { PurchasePanel } from "@/components/product/purchase-panel";
@@ -57,7 +57,8 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/produ
   const plans = await catalogue.subscriptionPlans();
   const all = await catalogue.listProducts();
   const crossSell = product.crossSell.map((s) => all.find((p) => p.slug === s)).filter((p) => p !== undefined);
-  const claims = product.claims.map((c) => c.text[locale]);
+  const claims = product.claims.filter((c) => c.reviewed).map((c) => c.text[locale]);
+  const faq = product.faq.filter((f) => pub(f.a[locale]));
 
   const url = absoluteUrl(locale, `/products/${slug}`);
   const jsonLd = [
@@ -128,35 +129,49 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/produ
             </div>
 
             <div className="mt-10 border-t border-line">
-              <Section title={t("description")} open>
-                <p>{product.description[locale]}</p>
-              </Section>
-              <Section title={t("howToUse")}>
-                <p>{product.howToUse[locale]}</p>
-              </Section>
-              <Section title={t("ingredients")}>
-                <p className="text-sm">{product.inci}</p>
-              </Section>
+              {pub(product.description[locale]) && (
+                <Section title={t("description")} open>
+                  <p>{product.description[locale]}</p>
+                </Section>
+              )}
+              {pub(product.howToUse[locale]) && (
+                <Section title={t("howToUse")}>
+                  <p>{product.howToUse[locale]}</p>
+                </Section>
+              )}
+              {pub(product.inci) && (
+                <Section title={t("ingredients")}>
+                  <p className="text-sm">{product.inci}</p>
+                </Section>
+              )}
               <Section title={t("details")}>
                 <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm">
                   <dt className="font-semibold">{t("netContent")}</dt>
                   <dd>{product.variants.map((v) => v.netContent).join(" / ")}</dd>
                   <dt className="font-semibold">PAO</dt>
                   <dd>{t("pao", { months: product.paoMonths })}</dd>
-                  <dt className="font-semibold">{t("warnings")}</dt>
-                  <dd>{product.warnings[locale]}</dd>
-                  <dt className="font-semibold">{t("responsiblePerson")}</dt>
-                  <dd>
-                    {site.responsiblePerson.name}
-                    <br />
-                    {site.responsiblePerson.address}
-                  </dd>
+                  {pub(product.warnings[locale]) && (
+                    <>
+                      <dt className="font-semibold">{t("warnings")}</dt>
+                      <dd>{product.warnings[locale]}</dd>
+                    </>
+                  )}
+                  {pub(site.responsiblePerson.name) && (
+                    <>
+                      <dt className="font-semibold">{t("responsiblePerson")}</dt>
+                      <dd>
+                        {site.responsiblePerson.name}
+                        <br />
+                        {site.responsiblePerson.address}
+                      </dd>
+                    </>
+                  )}
                 </dl>
               </Section>
-              {product.faq.length > 0 && (
+              {faq.length > 0 && (
                 <Section title={t("faq")}>
                   <dl className="space-y-4">
-                    {product.faq.map((f) => (
+                    {faq.map((f) => (
                       <div key={f.q[locale]}>
                         <dt className="font-semibold">{f.q[locale]}</dt>
                         <dd className="mt-1">{f.a[locale]}</dd>

@@ -25,6 +25,7 @@ export function ApiForm({
   errorMessage,
   errorMessages = {},
   requiredLabel,
+  showcaseMessage,
 }: {
   endpoint: string;
   fields: Field[];
@@ -34,11 +35,14 @@ export function ApiForm({
   errorMessage: string;
   errorMessages?: Record<string, string>;
   requiredLabel: string;
+  /** Shown when the shop is in showcase mode and this form is not active yet. */
+  showcaseMessage: string;
 }) {
   const locale = useLocale();
   const id = useId();
   const [state, setState] = useState<"idle" | "pending" | "done">("idle");
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -56,6 +60,11 @@ export function ApiForm({
         body: JSON.stringify(body),
       });
       const json = (await res.json().catch(() => ({}))) as Record<string, unknown>;
+      if (json.error === "showcase") {
+        setNotice(showcaseMessage);
+        setState("idle");
+        return;
+      }
       if (!res.ok) {
         setError(errorMessages[String(json.error)] ?? errorMessage);
         setState("idle");
@@ -121,6 +130,11 @@ export function ApiForm({
         );
       })}
       <input name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+      {notice && (
+        <p role="status" className="rounded-soft bg-paper px-4 py-3 font-semibold">
+          {notice}
+        </p>
+      )}
       {error && (
         <p role="alert" className="text-danger">
           {error}

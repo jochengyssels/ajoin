@@ -20,7 +20,7 @@
     "language": "Language",
     "home": "Ajoin & Shine home"
   },
-  "sample": "Test shop: products and prices are placeholders and no real payments are taken.",
+  "sample": "Preview: the shop opens soon. You can browse everything, but ordering isn't possible yet.",
   "home": {
     "heroTitle": "Every day is carnival for your hair.",
     "heroBody": "Shampoo, conditioner and hair oil with onion extract. Made in the spirit of Aalst, where the locals have been called the Ajuinen, the onions, for generations.",
@@ -55,7 +55,8 @@
     "confirmedTitle": "You're subscribed",
     "confirmedBody": "Thanks for confirming. You'll hear from us soon.",
     "invalidTitle": "This link has expired",
-    "invalidBody": "Subscribe again and we'll send you a new confirmation link."
+    "invalidBody": "Subscribe again and we'll send you a new confirmation link.",
+    "showcase": "Sign-up opens together with the shop. Come back soon."
   },
   "shop": {
     "title": "Shop",
@@ -143,7 +144,8 @@
     "shippingCost": "Shipping",
     "shippingFree": "Free",
     "total": "Estimated total",
-    "mixedIntervals": "Subscriptions in one order need the same delivery interval. Change one of them and try again."
+    "mixedIntervals": "Subscriptions in one order need the same delivery interval. Change one of them and try again.",
+    "showcase": "We're not taking orders yet. The shop opens soon, so keep your cart and come back."
   },
   "checkout": {
     "successTitle": "Thank you for your order",
@@ -197,7 +199,13 @@
     "doneBody": "We've emailed you an acknowledgement with the date and time. Return instructions are in that email.",
     "notFound": "We couldn't find an order with that email address and order number.",
     "error": "Something went wrong. Try again, or email us.",
-    "formLink": "Prefer paper? Download the model withdrawal form."
+    "formLink": "Prefer paper? Download the model withdrawal form.",
+    "modelTitle": "Model withdrawal form",
+    "modelIntro": "Prefer to write? Copy this form into an email or letter, complete it and send it to us.",
+    "modelTo": "To:",
+    "modelBody": "I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract of sale of the following goods (*)/for the provision of the following service (*):",
+    "modelLines": "Ordered on (*)/received on (*)|Name of consumer(s)|Address of consumer(s)|Signature of consumer(s) (only if this form is notified on paper)|Date",
+    "modelNote": "(*) Delete as appropriate."
   },
   "contact": {
     "title": "Contact",
@@ -235,7 +243,8 @@
   },
   "form": {
     "required": "Required",
-    "invalidEmail": "Enter a valid email address."
+    "invalidEmail": "Enter a valid email address.",
+    "showcase": "This form opens together with the shop. Until then, you can reach us by email."
   },
   "errors": {
     "notFoundTitle": "This page has gone",
@@ -294,5 +303,12 @@
     "withdrawalTitle": "We've received your withdrawal",
     "withdrawalBody": "We received your withdrawal from order {number} on {date}.",
     "withdrawalReturn": "TODO_BRAND: return address and instructions. We refund within 14 days of receiving your withdrawal, once the goods are back or you've shown they were sent."
+  },
+  "shippingTable": {
+    "country": "Country",
+    "cost": "Shipping",
+    "time": "Delivery time",
+    "days": "{min}–{max} working days",
+    "free": "Free shipping from {amount}."
   }
 }

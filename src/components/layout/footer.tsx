@@ -1,8 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { site } from "@/lib/site";
+import { pub, site } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { ConsentSettingsButton } from "@/components/consent/consent";
+
+const analyticsConfigured = Boolean(process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || process.env.NEXT_PUBLIC_GA_ID);
 import { Wordmark } from "./wordmark";
 import { Harlequin } from "@/components/ui/harlequin";
 
@@ -61,7 +63,7 @@ export async function Footer() {
                   </Link>
                 </li>
               ))}
-              {g.title === t("legal") && (
+              {g.title === t("legal") && analyticsConfigured && (
                 <li className="inline-flex min-h-9 items-center">
                   <ConsentSettingsButton label={t("cookies")} />
                 </li>
@@ -72,10 +74,13 @@ export async function Footer() {
       </Container>
       <div className="border-t border-flesh/15">
         <Container className="flex flex-col gap-1 py-5 text-xs text-flesh/75 sm:flex-row sm:justify-between">
-          <span>{t("rights", { year: new Date().getFullYear(), company: site.company.name })}</span>
-          <span>
-            VAT {site.company.vat} · {site.company.enterpriseNumber}
-          </span>
+          <span>{t("rights", { year: new Date().getFullYear(), company: pub(site.company.name) ?? site.name })}</span>
+          {pub(site.company.vat) && (
+            <span>
+              VAT {site.company.vat}
+              {pub(site.company.enterpriseNumber) && ` · ${site.company.enterpriseNumber}`}
+            </span>
+          )}
         </Container>
       </div>
     </footer>

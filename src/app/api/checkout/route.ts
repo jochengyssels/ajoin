@@ -9,6 +9,7 @@ import { priceCart } from "@/lib/cart/pricing";
 import { buildCheckoutParams } from "@/lib/stripe/checkout";
 import { isLiveMode, stripe } from "@/lib/stripe/client";
 import { site } from "@/lib/site";
+import { isShowcase, showcaseResponse } from "@/lib/showcase";
 import { freeShippingThresholdCents, shippingPlaceholder, shippingRates } from "../../../../content/shipping";
 
 const Body = z.object({
@@ -18,6 +19,7 @@ const Body = z.object({
 });
 
 export async function POST(req: Request) {
+  if (isShowcase()) return showcaseResponse();
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   const { locale, country } = parsed.data;

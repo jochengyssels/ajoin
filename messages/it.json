@@ -20,7 +20,7 @@
     "language": "Lingua",
     "home": "Home Ajoin & Shine"
   },
-  "sample": "Negozio di prova: prodotti e prezzi sono segnaposto e non viene effettuato alcun pagamento reale.",
+  "sample": "Anteprima: il negozio apre presto. Puoi guardare tutto, ma non ancora ordinare.",
   "home": {
     "heroTitle": "Ogni giorno è carnevale per i tuoi capelli.",
     "heroBody": "Shampoo, balsamo e olio per capelli all’estratto di cipolla. Nello spirito di Aalst, dove gli abitanti si chiamano Ajuinen, le cipolle, da generazioni.",
@@ -55,7 +55,8 @@
     "confirmedTitle": "Sei iscritto",
     "confirmedBody": "Grazie per la conferma. Avrai presto nostre notizie.",
     "invalidTitle": "Questo link è scaduto",
-    "invalidBody": "Iscriviti di nuovo e ti invieremo un nuovo link di conferma."
+    "invalidBody": "Iscriviti di nuovo e ti invieremo un nuovo link di conferma.",
+    "showcase": "L’iscrizione apre insieme al negozio. Torna presto."
   },
   "shop": {
     "title": "Shop",
@@ -143,7 +144,8 @@
     "shippingCost": "Spedizione",
     "shippingFree": "Gratuita",
     "total": "Totale stimato",
-    "mixedIntervals": "Gli abbonamenti in un ordine devono avere la stessa frequenza. Modificane uno e riprova."
+    "mixedIntervals": "Gli abbonamenti in un ordine devono avere la stessa frequenza. Modificane uno e riprova.",
+    "showcase": "Non accettiamo ancora ordini. Il negozio apre presto: tieni il carrello e torna a trovarci."
   },
   "checkout": {
     "successTitle": "Grazie per il tuo ordine",
@@ -197,7 +199,13 @@
     "doneBody": "Ti abbiamo inviato via e-mail una conferma di ricezione con data e ora. Le istruzioni per il reso sono in quell’e-mail.",
     "notFound": "Non abbiamo trovato alcun ordine con questo indirizzo email e numero d’ordine.",
     "error": "Qualcosa è andato storto. Riprova o scrivici via email.",
-    "formLink": "Preferisci la carta? Scarica il modulo tipo di recesso."
+    "formLink": "Preferisci la carta? Scarica il modulo tipo di recesso.",
+    "modelTitle": "Modulo di recesso tipo",
+    "modelIntro": "Preferisci scrivere? Copia questo modulo in un’email o in una lettera, compilalo e invialo a noi.",
+    "modelTo": "Destinatario:",
+    "modelBody": "Con la presente io/noi (*) notifichiamo il recesso dal mio/nostro (*) contratto di vendita dei seguenti beni/servizi (*):",
+    "modelLines": "Ordinato il (*)/ricevuto il (*)|Nome del/dei consumatore(i)|Indirizzo del/dei consumatore(i)|Firma del/dei consumatore(i) (solo se il presente modulo è notificato in versione cartacea)|Data",
+    "modelNote": "(*) Cancellare la dicitura inutile."
   },
   "contact": {
     "title": "Contatti",
@@ -235,7 +243,8 @@
   },
   "form": {
     "required": "Obbligatorio",
-    "invalidEmail": "Inserisci un indirizzo email valido."
+    "invalidEmail": "Inserisci un indirizzo email valido.",
+    "showcase": "Questo modulo apre insieme al negozio. Nel frattempo, scrivici per e-mail."
   },
   "errors": {
     "notFoundTitle": "Questa pagina non c’è più",
@@ -294,5 +303,12 @@
     "withdrawalTitle": "Abbiamo ricevuto il tuo recesso",
     "withdrawalBody": "Abbiamo ricevuto il tuo recesso per l’ordine {number} il {date}.",
     "withdrawalReturn": "TODO_BRAND: return address and instructions. We refund within 14 days of receiving your withdrawal, once the goods are back or you've shown they were sent."
+  },
+  "shippingTable": {
+    "country": "Paese",
+    "cost": "Spedizione",
+    "time": "Tempi di consegna",
+    "days": "{min}–{max} giorni lavorativi",
+    "free": "Spedizione gratuita da {amount}."
   }
 }

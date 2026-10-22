@@ -20,7 +20,7 @@
     "language": "Langue",
     "home": "Accueil Ajoin & Shine"
   },
-  "sample": "Boutique de test : les produits et les prix sont fictifs et aucun paiement réel n’est effectué.",
+  "sample": "Aperçu : la boutique ouvre bientôt. Vous pouvez tout découvrir, mais pas encore commander.",
   "home": {
     "heroTitle": "Le carnaval dans vos cheveux, tous les jours.",
     "heroBody": "Shampooing, après-shampooing et huile capillaire à l’extrait d’oignon. Dans l’esprit d’Alost, dont les habitants sont surnommés les Ajuinen, les oignons, depuis des générations.",
@@ -55,7 +55,8 @@
     "confirmedTitle": "Vous êtes inscrit",
     "confirmedBody": "Merci pour votre confirmation. Vous aurez bientôt de nos nouvelles.",
     "invalidTitle": "Ce lien a expiré",
-    "invalidBody": "Inscrivez-vous à nouveau et nous vous enverrons un nouveau lien de confirmation."
+    "invalidBody": "Inscrivez-vous à nouveau et nous vous enverrons un nouveau lien de confirmation.",
+    "showcase": "L’inscription ouvre en même temps que la boutique. Revenez bientôt."
   },
   "shop": {
     "title": "Boutique",
@@ -143,7 +144,8 @@
     "shippingCost": "Livraison",
     "shippingFree": "Gratuite",
     "total": "Total estimé",
-    "mixedIntervals": "Les abonnements d’une même commande doivent avoir la même fréquence. Modifiez-en un et réessayez."
+    "mixedIntervals": "Les abonnements d’une même commande doivent avoir la même fréquence. Modifiez-en un et réessayez.",
+    "showcase": "Nous ne prenons pas encore de commandes. La boutique ouvre bientôt : gardez votre panier et revenez."
   },
   "checkout": {
     "successTitle": "Merci pour votre commande",
@@ -197,7 +199,13 @@
     "doneBody": "Nous vous avons envoyé par e-mail un accusé de réception avec la date et l’heure. Les instructions de retour s’y trouvent.",
     "notFound": "Nous n’avons trouvé aucune commande correspondant à cette adresse e-mail et à ce numéro de commande.",
     "error": "Un problème est survenu. Réessayez ou écrivez-nous par e-mail.",
-    "formLink": "Vous préférez le papier ? Téléchargez le modèle de formulaire de rétractation."
+    "formLink": "Vous préférez le papier ? Téléchargez le modèle de formulaire de rétractation.",
+    "modelTitle": "Modèle de formulaire de rétractation",
+    "modelIntro": "Vous préférez écrire ? Copiez ce formulaire dans un e-mail ou une lettre, complétez-le et envoyez-le-nous.",
+    "modelTo": "À l'attention de :",
+    "modelBody": "Je/Nous (*) vous notifie/notifions (*) par la présente ma/notre (*) rétractation du contrat portant sur la vente du bien (*)/pour la prestation de services (*) ci-dessous :",
+    "modelLines": "Commandé le (*)/reçu le (*)|Nom du (des) consommateur(s)|Adresse du (des) consommateur(s)|Signature du (des) consommateur(s) (uniquement en cas de notification du présent formulaire sur papier)|Date",
+    "modelNote": "(*) Rayez la mention inutile."
   },
   "contact": {
     "title": "Contact",
@@ -235,7 +243,8 @@
   },
   "form": {
     "required": "Obligatoire",
-    "invalidEmail": "Saisissez une adresse e-mail valide."
+    "invalidEmail": "Saisissez une adresse e-mail valide.",
+    "showcase": "Ce formulaire ouvre en même temps que la boutique. D’ici là, écrivez-nous par e-mail."
   },
   "errors": {
     "notFoundTitle": "Cette page n’existe plus",
@@ -294,5 +303,12 @@
     "withdrawalTitle": "Nous avons reçu votre rétractation",
     "withdrawalBody": "Nous avons reçu votre rétractation pour la commande {number} le {date}.",
     "withdrawalReturn": "TODO_BRAND: return address and instructions. We refund within 14 days of receiving your withdrawal, once the goods are back or you've shown they were sent."
+  },
+  "shippingTable": {
+    "country": "Pays",
+    "cost": "Livraison",
+    "time": "Délai",
+    "days": "{min} à {max} jours ouvrables",
+    "free": "Livraison gratuite dès {amount}."
   }
 }

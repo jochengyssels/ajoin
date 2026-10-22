@@ -46,7 +46,15 @@ export function ConsentSettingsButton({ label }: { label: string }) {
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
+export const analyticsConfigured = Boolean(plausibleDomain || gaId);
+
+/** Consent banner and consent-gated analytics. Renders nothing while no analytics tool is configured. */
 export function Consent() {
+  if (!analyticsConfigured) return null;
+  return <ConsentInner />;
+}
+
+function ConsentInner() {
   const t = useTranslations("consent");
   // "pending" on the server: render no banner and no scripts until the cookie has been read.
   const choice = useSyncExternalStore(subscribeConsent, readChoice, () => "pending" as const);
