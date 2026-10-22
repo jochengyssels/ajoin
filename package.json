@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "e2e": "playwright test",
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -20,6 +25,7 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "resend": "^6.34.1",
+    "server-only": "^0.0.1",
     "stripe": "^23.0.0",
     "zod": "^4.6.7"
   },

@@ -126,7 +126,7 @@
     "empty": "Your cart is empty.",
     "emptyCta": "Go to the shop",
     "subtotal": "Subtotal",
-    "subtotalNote": "Incl. VAT. Shipping is calculated at checkout.",
+    "subtotalNote": "Incl. VAT. Promo codes can be entered at checkout.",
     "freeShippingRemaining": "Add {amount} for free shipping",
     "freeShippingReached": "Free shipping unlocked",
     "promo": "Promo codes can be entered at checkout.",
@@ -138,7 +138,12 @@
     "every": "Every {weeks} weeks, {percent}% off",
     "bundle": "Bundle",
     "updated": "Some items in your cart are no longer available and were removed.",
-    "removeShort": "Remove"
+    "removeShort": "Remove",
+    "shipTo": "Ship to",
+    "shippingCost": "Shipping",
+    "shippingFree": "Free",
+    "total": "Estimated total",
+    "mixedIntervals": "Subscriptions in one order need the same delivery interval. Change one of them and try again."
   },
   "checkout": {
     "successTitle": "Thank you for your order",
@@ -147,7 +152,8 @@
     "cancelTitle": "Checkout cancelled",
     "cancelBody": "Nothing was charged. Your cart is still here when you're ready.",
     "backToCart": "Return to cart",
-    "continueShopping": "Continue shopping"
+    "continueShopping": "Continue shopping",
+    "shippingLine": "Shipping"
   },
   "orders": {
     "title": "Find your order",
@@ -188,7 +194,7 @@
     "submit": "Confirm withdrawal",
     "pending": "Sending…",
     "doneTitle": "Withdrawal received",
-    "doneBody": "We've sent an acknowledgement with the date and time to {email}. Return instructions are in that email.",
+    "doneBody": "We've emailed you an acknowledgement with the date and time. Return instructions are in that email.",
     "notFound": "We couldn't find an order with that email address and order number.",
     "error": "Something went wrong. Try again, or email us.",
     "formLink": "Prefer paper? Download the model withdrawal form."
@@ -255,5 +261,38 @@
     "shipping": "Shipping & returns",
     "notice": "Legal notice",
     "draftNotice": "Draft: this page contains placeholders and is awaiting legal review."
+  },
+  "countries": {
+    "BE": "Belgium",
+    "NL": "Netherlands",
+    "FR": "France",
+    "IT": "Italy"
+  },
+  "emails": {
+    "orderSubject": "Your order {number}",
+    "orderTitle": "Thank you for your order",
+    "orderIntro": "Hi {name}, we've received your order and it's being prepared.",
+    "orderNumber": "Order number",
+    "everyWeeks": "Every {weeks} weeks",
+    "shipping": "Shipping",
+    "free": "Free",
+    "discount": "Discount",
+    "total": "Total",
+    "vatIncluded": "Of which VAT",
+    "shipTo": "Shipping to",
+    "viewOrder": "View your order",
+    "withdrawalNote": "You have 14 days from delivery to withdraw from your purchase.",
+    "withdrawalLink": "Withdraw from your purchase",
+    "lookupSubject": "Your link to order {number}",
+    "lookupTitle": "Here's your order",
+    "lookupBody": "Use the button below to view your order. The link works for 30 minutes.",
+    "newsletterSubject": "Confirm your subscription",
+    "newsletterTitle": "One more click",
+    "newsletterBody": "Confirm that you want to receive the Ajoin & Shine newsletter. If you didn't ask for this, ignore this email.",
+    "newsletterButton": "Confirm subscription",
+    "withdrawalSubject": "Withdrawal received for order {number}",
+    "withdrawalTitle": "We've received your withdrawal",
+    "withdrawalBody": "We received your withdrawal from order {number} on {date}.",
+    "withdrawalReturn": "TODO_BRAND: return address and instructions. We refund within 14 days of receiving your withdrawal, once the goods are back or you've shown they were sent."
   }
 }

@@ -5,7 +5,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { freeShippingProgress } from "@/lib/cart/pricing";
+import { freeShippingProgress, shippingCostCents } from "@/lib/cart/pricing";
+import { shippingRates, type ShippingCountry } from "../../../content/shipping";
 import { formatPrice } from "@/lib/format";
 import { Button, buttonClass } from "@/components/ui/button";
 import { Price } from "@/components/ui/price";
@@ -19,6 +20,10 @@ export function CartDrawer() {
   const ref = useRef<HTMLDialogElement>(null);
   const [checkingOut, setCheckingOut] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const tc = useTranslations("countries");
+  const defaultCountry: ShippingCountry = locale === "fr" ? "FR" : locale === "it" ? "IT" : "BE";
+  const [country, setCountry] = useState<ShippingCountry>(defaultCountry);
+  const rate = shippingRates.find((r) => r.country === country) ?? shippingRates[0];
 
   useEffect(() => {
     const dialog = ref.current;
@@ -28,6 +33,7 @@ export function CartDrawer() {
   }, [isOpen]);
 
   const ship = freeShippingProgress(priced.subtotalCents, freeShippingThresholdCents);
+  const shippingCents = shippingCostCents(priced.subtotalCents, rate.amountCents, freeShippingThresholdCents);
 
   async function checkout() {
     setCheckingOut(true);
@@ -36,13 +42,13 @@ export function CartDrawer() {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cart, locale }),
+        body: JSON.stringify({ cart, locale, country }),
       });
       const data = (await res.json()) as { url?: string; error?: string };
       if (!res.ok || !data.url) throw new Error(data.error ?? "checkout_failed");
       window.location.assign(data.url);
-    } catch {
-      setError(t("checkoutError"));
+    } catch (e) {
+      setError(e instanceof Error && e.message === "mixed_intervals" ? t("mixedIntervals") : t("checkoutError"));
       setCheckingOut(false);
     }
   }
@@ -152,12 +158,38 @@ export function CartDrawer() {
 
         {priced.lines.length > 0 && (
           <div className="border-t border-line px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4">
-            <div className="flex items-baseline justify-between">
-              <span className="font-semibold">{t("subtotal")}</span>
-              <Price cents={priced.subtotalCents} locale={locale} className="text-xl font-semibold" />
+            <div className="flex items-center justify-between gap-3">
+              <label htmlFor="ship-country" className="text-sm font-semibold">
+                {t("shipTo")}
+              </label>
+              <select
+                id="ship-country"
+                value={country}
+                onChange={(e) => setCountry(e.target.value as ShippingCountry)}
+                className="min-h-11 rounded-soft border border-line bg-white px-3 text-sm"
+              >
+                {shippingRates.map((r) => (
+                  <option key={r.country} value={r.country}>
+                    {tc(r.country)}
+                  </option>
+                ))}
+              </select>
             </div>
-            <p className="mt-1 text-sm text-muted">{t("subtotalNote")}</p>
-            <p className="text-sm text-muted">{t("promo")}</p>
+            <dl className="mt-3 space-y-1 text-sm">
+              <div className="flex justify-between">
+                <dt>{t("subtotal")}</dt>
+                <dd className="tabular-nums">{formatPrice(priced.subtotalCents, locale)}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt>{t("shippingCost")}</dt>
+                <dd className="tabular-nums">{shippingCents === 0 ? t("shippingFree") : formatPrice(shippingCents, locale)}</dd>
+              </div>
+              <div className="flex items-baseline justify-between pt-1 text-base font-semibold">
+                <dt>{t("total")}</dt>
+                <dd className="text-xl tabular-nums">{formatPrice(priced.subtotalCents + shippingCents, locale)}</dd>
+              </div>
+            </dl>
+            <p className="mt-1 text-xs text-muted">{t("subtotalNote")}</p>
             {error && (
               <p role="alert" className="mt-3 text-sm text-danger">
                 {error}

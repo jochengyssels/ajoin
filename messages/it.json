@@ -126,7 +126,7 @@
     "empty": "Il tuo carrello è vuoto.",
     "emptyCta": "Vai allo shop",
     "subtotal": "Subtotale",
-    "subtotalNote": "IVA inclusa. Le spese di spedizione sono calcolate al checkout.",
+    "subtotalNote": "IVA inclusa. I codici sconto si inseriscono al pagamento.",
     "freeShippingRemaining": "Aggiungi {amount} per la spedizione gratuita",
     "freeShippingReached": "Spedizione gratuita sbloccata",
     "promo": "I codici promozionali si inseriscono al checkout.",
@@ -138,7 +138,12 @@
     "every": "Ogni {weeks} settimane, {percent}% di sconto",
     "bundle": "Kit",
     "updated": "Alcuni articoli nel tuo carrello non sono più disponibili e sono stati rimossi.",
-    "removeShort": "Rimuovi"
+    "removeShort": "Rimuovi",
+    "shipTo": "Spedisci in",
+    "shippingCost": "Spedizione",
+    "shippingFree": "Gratuita",
+    "total": "Totale stimato",
+    "mixedIntervals": "Gli abbonamenti in un ordine devono avere la stessa frequenza. Modificane uno e riprova."
   },
   "checkout": {
     "successTitle": "Grazie per il tuo ordine",
@@ -147,7 +152,8 @@
     "cancelTitle": "Checkout annullato",
     "cancelBody": "Non è stato addebitato nulla. Il tuo carrello ti aspetta quando sei pronto.",
     "backToCart": "Torna al carrello",
-    "continueShopping": "Continua lo shopping"
+    "continueShopping": "Continua lo shopping",
+    "shippingLine": "Spedizione"
   },
   "orders": {
     "title": "Trova il tuo ordine",
@@ -188,7 +194,7 @@
     "submit": "Conferma il recesso",
     "pending": "Invio in corso…",
     "doneTitle": "Recesso ricevuto",
-    "doneBody": "Abbiamo inviato una conferma di ricezione con data e ora a {email}. Le istruzioni per il reso sono in quell’email.",
+    "doneBody": "Ti abbiamo inviato via e-mail una conferma di ricezione con data e ora. Le istruzioni per il reso sono in quell’e-mail.",
     "notFound": "Non abbiamo trovato alcun ordine con questo indirizzo email e numero d’ordine.",
     "error": "Qualcosa è andato storto. Riprova o scrivici via email.",
     "formLink": "Preferisci la carta? Scarica il modulo tipo di recesso."
@@ -255,5 +261,38 @@
     "shipping": "Spedizioni e resi",
     "notice": "Note legali",
     "draftNotice": "Bozza: questa pagina contiene testi provvisori ed è in attesa di revisione legale."
+  },
+  "countries": {
+    "BE": "Belgio",
+    "NL": "Paesi Bassi",
+    "FR": "Francia",
+    "IT": "Italia"
+  },
+  "emails": {
+    "orderSubject": "Il tuo ordine {number}",
+    "orderTitle": "Grazie per il tuo ordine",
+    "orderIntro": "Ciao {name}, abbiamo ricevuto il tuo ordine e lo stiamo preparando.",
+    "orderNumber": "Numero d’ordine",
+    "everyWeeks": "Ogni {weeks} settimane",
+    "shipping": "Spedizione",
+    "free": "Gratuita",
+    "discount": "Sconto",
+    "total": "Totale",
+    "vatIncluded": "Di cui IVA",
+    "shipTo": "Spedizione a",
+    "viewOrder": "Vedi il tuo ordine",
+    "withdrawalNote": "Hai 14 giorni dalla consegna per recedere dall’acquisto.",
+    "withdrawalLink": "Recedi dall’acquisto",
+    "lookupSubject": "Il tuo link all’ordine {number}",
+    "lookupTitle": "Ecco il tuo ordine",
+    "lookupBody": "Usa il pulsante qui sotto per vedere il tuo ordine. Il link vale 30 minuti.",
+    "newsletterSubject": "Conferma la tua iscrizione",
+    "newsletterTitle": "Ancora un clic",
+    "newsletterBody": "Conferma di voler ricevere la newsletter di Ajoin & Shine. Se non l’hai richiesta, ignora questa e-mail.",
+    "newsletterButton": "Conferma iscrizione",
+    "withdrawalSubject": "Recesso ricevuto per l’ordine {number}",
+    "withdrawalTitle": "Abbiamo ricevuto il tuo recesso",
+    "withdrawalBody": "Abbiamo ricevuto il tuo recesso per l’ordine {number} il {date}.",
+    "withdrawalReturn": "TODO_BRAND: return address and instructions. We refund within 14 days of receiving your withdrawal, once the goods are back or you've shown they were sent."
   }
 }

@@ -126,7 +126,7 @@
     "empty": "Je winkelmandje is leeg.",
     "emptyCta": "Naar de shop",
     "subtotal": "Subtotaal",
-    "subtotalNote": "Incl. btw. Verzendkosten worden bij het afrekenen berekend.",
+    "subtotalNote": "Incl. btw. Kortingscodes vul je in bij het afrekenen.",
     "freeShippingRemaining": "Nog {amount} tot gratis verzending",
     "freeShippingReached": "Je krijgt gratis verzending",
     "promo": "Kortingscodes kun je bij het afrekenen invullen.",
@@ -138,7 +138,12 @@
     "every": "Elke {weeks} weken, {percent}% korting",
     "bundle": "Set",
     "updated": "Sommige artikelen in je winkelmandje zijn niet meer beschikbaar en werden verwijderd.",
-    "removeShort": "Verwijderen"
+    "removeShort": "Verwijderen",
+    "shipTo": "Verzenden naar",
+    "shippingCost": "Verzending",
+    "shippingFree": "Gratis",
+    "total": "Geschat totaal",
+    "mixedIntervals": "Abonnementen in één bestelling moeten hetzelfde leverritme hebben. Pas er een aan en probeer opnieuw."
   },
   "checkout": {
     "successTitle": "Bedankt voor je bestelling",
@@ -147,7 +152,8 @@
     "cancelTitle": "Afrekenen geannuleerd",
     "cancelBody": "Er is niets afgeschreven. Je winkelmandje staat klaar wanneer jij dat bent.",
     "backToCart": "Terug naar winkelmandje",
-    "continueShopping": "Verder winkelen"
+    "continueShopping": "Verder winkelen",
+    "shippingLine": "Verzending"
   },
   "orders": {
     "title": "Je bestelling opzoeken",
@@ -188,7 +194,7 @@
     "submit": "Herroeping bevestigen",
     "pending": "Bezig met verzenden…",
     "doneTitle": "Herroeping ontvangen",
-    "doneBody": "We hebben een ontvangstbevestiging met datum en tijd naar {email} gestuurd. De retourinstructies staan in die e-mail.",
+    "doneBody": "We stuurden je een ontvangstbevestiging met datum en uur per e-mail. Daarin staan ook de instructies om terug te sturen.",
     "notFound": "We vonden geen bestelling met dat e-mailadres en bestelnummer.",
     "error": "Er ging iets mis. Probeer het opnieuw of stuur ons een e-mail.",
     "formLink": "Liever op papier? Download het modelformulier voor herroeping."
@@ -255,5 +261,38 @@
     "shipping": "Verzending en retour",
     "notice": "Juridische informatie",
     "draftNotice": "Concept: deze pagina bevat tijdelijke tekst en wacht op juridische controle."
+  },
+  "countries": {
+    "BE": "België",
+    "NL": "Nederland",
+    "FR": "Frankrijk",
+    "IT": "Italië"
+  },
+  "emails": {
+    "orderSubject": "Je bestelling {number}",
+    "orderTitle": "Bedankt voor je bestelling",
+    "orderIntro": "Hallo {name}, we hebben je bestelling ontvangen en maken ze klaar.",
+    "orderNumber": "Bestelnummer",
+    "everyWeeks": "Om de {weeks} weken",
+    "shipping": "Verzending",
+    "free": "Gratis",
+    "discount": "Korting",
+    "total": "Totaal",
+    "vatIncluded": "Waarvan btw",
+    "shipTo": "Verzonden naar",
+    "viewOrder": "Bekijk je bestelling",
+    "withdrawalNote": "Je hebt 14 dagen na levering om je aankoop te herroepen.",
+    "withdrawalLink": "Aankoop herroepen",
+    "lookupSubject": "Je link naar bestelling {number}",
+    "lookupTitle": "Hier is je bestelling",
+    "lookupBody": "Gebruik de knop hieronder om je bestelling te bekijken. De link werkt 30 minuten.",
+    "newsletterSubject": "Bevestig je inschrijving",
+    "newsletterTitle": "Nog één klik",
+    "newsletterBody": "Bevestig dat je de nieuwsbrief van Ajoin & Shine wilt ontvangen. Heb je dit niet gevraagd? Negeer dan deze e-mail.",
+    "newsletterButton": "Inschrijving bevestigen",
+    "withdrawalSubject": "Herroeping ontvangen voor bestelling {number}",
+    "withdrawalTitle": "We hebben je herroeping ontvangen",
+    "withdrawalBody": "We ontvingen je herroeping voor bestelling {number} op {date}.",
+    "withdrawalReturn": "TODO_BRAND: return address and instructions. We refund within 14 days of receiving your withdrawal, once the goods are back or you've shown they were sent."
   }
 }

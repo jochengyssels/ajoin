@@ -126,7 +126,7 @@
     "empty": "Votre panier est vide.",
     "emptyCta": "Aller à la boutique",
     "subtotal": "Sous-total",
-    "subtotalNote": "TVA incl. Les frais de livraison sont calculés lors du paiement.",
+    "subtotalNote": "TVA incl. Les codes promo se saisissent au paiement.",
     "freeShippingRemaining": "Plus que {amount} pour la livraison gratuite",
     "freeShippingReached": "Livraison gratuite débloquée",
     "promo": "Les codes promo peuvent être saisis lors du paiement.",
@@ -138,7 +138,12 @@
     "every": "Toutes les {weeks} semaines, -{percent} %",
     "bundle": "Coffret",
     "updated": "Certains articles de votre panier ne sont plus disponibles et ont été retirés.",
-    "removeShort": "Retirer"
+    "removeShort": "Retirer",
+    "shipTo": "Livrer en",
+    "shippingCost": "Livraison",
+    "shippingFree": "Gratuite",
+    "total": "Total estimé",
+    "mixedIntervals": "Les abonnements d’une même commande doivent avoir la même fréquence. Modifiez-en un et réessayez."
   },
   "checkout": {
     "successTitle": "Merci pour votre commande",
@@ -147,7 +152,8 @@
     "cancelTitle": "Paiement annulé",
     "cancelBody": "Aucun montant n’a été débité. Votre panier vous attend quand vous serez prêt.",
     "backToCart": "Retour au panier",
-    "continueShopping": "Continuer mes achats"
+    "continueShopping": "Continuer mes achats",
+    "shippingLine": "Livraison"
   },
   "orders": {
     "title": "Retrouver votre commande",
@@ -188,7 +194,7 @@
     "submit": "Confirmer la rétractation",
     "pending": "Envoi…",
     "doneTitle": "Rétractation reçue",
-    "doneBody": "Nous avons envoyé un accusé de réception, avec la date et l’heure, à {email}. Les instructions de retour figurent dans cet e-mail.",
+    "doneBody": "Nous vous avons envoyé par e-mail un accusé de réception avec la date et l’heure. Les instructions de retour s’y trouvent.",
     "notFound": "Nous n’avons trouvé aucune commande correspondant à cette adresse e-mail et à ce numéro de commande.",
     "error": "Un problème est survenu. Réessayez ou écrivez-nous par e-mail.",
     "formLink": "Vous préférez le papier ? Téléchargez le modèle de formulaire de rétractation."
@@ -255,5 +261,38 @@
     "shipping": "Livraison et retours",
     "notice": "Mentions légales",
     "draftNotice": "Brouillon : cette page contient des éléments provisoires et est en attente de validation juridique."
+  },
+  "countries": {
+    "BE": "Belgique",
+    "NL": "Pays-Bas",
+    "FR": "France",
+    "IT": "Italie"
+  },
+  "emails": {
+    "orderSubject": "Votre commande {number}",
+    "orderTitle": "Merci pour votre commande",
+    "orderIntro": "Bonjour {name}, nous avons bien reçu votre commande et nous la préparons.",
+    "orderNumber": "Numéro de commande",
+    "everyWeeks": "Toutes les {weeks} semaines",
+    "shipping": "Livraison",
+    "free": "Gratuite",
+    "discount": "Réduction",
+    "total": "Total",
+    "vatIncluded": "Dont TVA",
+    "shipTo": "Livraison à",
+    "viewOrder": "Voir votre commande",
+    "withdrawalNote": "Vous disposez de 14 jours à compter de la livraison pour vous rétracter.",
+    "withdrawalLink": "Se rétracter",
+    "lookupSubject": "Votre lien vers la commande {number}",
+    "lookupTitle": "Voici votre commande",
+    "lookupBody": "Utilisez le bouton ci-dessous pour voir votre commande. Le lien est valable 30 minutes.",
+    "newsletterSubject": "Confirmez votre inscription",
+    "newsletterTitle": "Plus qu’un clic",
+    "newsletterBody": "Confirmez que vous souhaitez recevoir la newsletter Ajoin & Shine. Si vous ne l’avez pas demandée, ignorez cet e-mail.",
+    "newsletterButton": "Confirmer l’inscription",
+    "withdrawalSubject": "Rétractation reçue pour la commande {number}",
+    "withdrawalTitle": "Nous avons reçu votre rétractation",
+    "withdrawalBody": "Nous avons reçu votre rétractation pour la commande {number} le {date}.",
+    "withdrawalReturn": "TODO_BRAND: return address and instructions. We refund within 14 days of receiving your withdrawal, once the goods are back or you've shown they were sent."
   }
 }
