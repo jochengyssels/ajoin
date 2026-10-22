@@ -29,13 +29,14 @@ export function pageMetadata({
   description?: string;
   image?: string;
 }): Metadata {
+  // Leave description out when there is none, so the locale default from the layout applies.
   return {
     title,
-    description,
+    ...(description ? { description } : {}),
     alternates: alternates(locale, path),
     openGraph: {
       title,
-      description,
+      ...(description ? { description } : {}),
       url: absoluteUrl(locale, path),
       siteName: site.name,
       locale,

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import type { ReactNode } from "react";
 import { routing, type Locale } from "@/i18n/routing";
 import { catalogue } from "@/lib/catalogue";
@@ -47,11 +47,27 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
 
   const t = await getTranslations({ locale, namespace: "nav" });
   const sample = await getTranslations({ locale });
-  const [products, bundles, plans] = await Promise.all([
+  // Client components only need these namespaces; the rest stays on the server.
+  const all = await getMessages({ locale });
+  const clientMessages = Object.fromEntries(
+    ["nav", "cart", "product", "shop", "bundles", "newsletter", "consent", "countries", "errors"].map((k) => [k, all[k]]),
+  );
+  const [fullProducts, bundles, plans] = await Promise.all([
     catalogue.listProducts(),
     catalogue.listBundles(),
     catalogue.subscriptionPlans(),
   ]);
+  // The cart only needs names, sizes, prices and a thumbnail: leave the long copy out of the client payload.
+  const products = fullProducts.map((p) => ({
+    ...p,
+    description: p.name,
+    howToUse: p.name,
+    warnings: p.name,
+    inci: "",
+    faq: [],
+    claims: [],
+    images: p.images.slice(0, 1),
+  }));
 
   return (
     <html lang={locale as Locale} className={`${gloock.variable} ${figtree.variable}`}>
@@ -62,7 +78,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         >
           {t("skip")}
         </a>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={clientMessages}>
           <CartProvider snapshot={{ products, bundles, plans }} freeShippingThresholdCents={freeShippingThresholdCents}>
             {(isShowcase() || catalogueHasPlaceholders()) && (
               <p className="bg-paper px-4 py-2 text-center text-xs font-medium text-ink">{sample("sample")}</p>

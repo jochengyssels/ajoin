@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ajoin & Shine — webshop
 
-## Getting Started
+Direct-to-consumer shop for Ajoin & Shine onion hair care. Belgium, the Netherlands, France and Italy, in Dutch (default), English, French and Italian.
 
-First, run the development server:
+Next.js 16 (App Router) · TypeScript · Tailwind CSS 4 · next-intl · Stripe Checkout · Drizzle + Neon Postgres · Resend · Vercel.
+
+## Status: showcase mode
+
+While `STRIPE_SECRET_KEY` is empty the shop runs in **showcase mode**: everything can be browsed and added to the cart, but checkout and the forms (newsletter, contact, order lookup, withdrawal) show an "opening soon" message instead of acting. A banner at the top says so. Search engines are kept out until `NEXT_PUBLIC_ALLOW_INDEXING=true`.
+
+Live checkout is also blocked in code while the catalogue or shipping config still contains placeholders, so real money can never be taken against sample prices. `/admin` lists what's still open.
+
+## What's still placeholder
+
+Search the code for `TODO_` to find every open item. In short:
+
+| What | Where |
+| --- | --- |
+| Product names, prices, INCI, copy, warnings, claims | `content/catalogue/products.ts` |
+| Shipping carriers, rates, free-shipping threshold | `content/shipping.ts` |
+| Company and Responsible Person details | `src/lib/site.ts` |
+| Brand story, ingredient texts, FAQ answers | `content/pages/<locale>/*.mdx` |
+| Legal texts (drafts, need legal review) | `content/pages/<locale>/{terms,privacy,legal-notice,shipping}.mdx` |
+| Product photos (placeholders are sized 1200×1500) | `public/images/` |
+
+Unfilled values are hidden from visitors automatically (`pub()` in `src/lib/site.ts`, MDX comments in content), so the showcase looks finished while the gaps stay visible in code.
+
+## Local setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # everything is optional for showcase mode
+npm run dev                  # http://localhost:3000 → redirects to /nl
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Script | Does |
+| --- | --- |
+| `npm run dev` / `build` / `start` | Next.js |
+| `npm test` | Unit tests (Vitest): cart, pricing, Stripe session building |
+| `npm run e2e` | Playwright on a mobile viewport. `E2E_BASE_URL=https://… npm run e2e` runs it against a deployed site |
+| `npm run typecheck` / `lint` | Types and ESLint |
+| `npm run db:generate` | New migration after editing `src/lib/db/schema.ts` |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+content/catalogue/products.ts   products, bundles, subscription plans (typed)
+content/shipping.ts             rates per country, free-shipping threshold
+content/pages/<locale>/         MDX: about, ingredients, faq, legal pages
+content/blog/                   journal posts (index.ts + one MDX per locale)
+messages/<locale>.json          all UI strings
+src/lib/catalogue/              CatalogueProvider interface + local provider (swap for CMS/Odoo here)
+src/lib/cart/                   pure cart and pricing logic (client and server use the same code)
+src/lib/stripe/checkout.ts      builds Checkout sessions from a server-priced cart
+src/lib/orders.ts               webhook → orders (idempotent)
+src/app/[locale]/               storefront routes
+src/app/api/                    checkout, webhook, newsletter, contact, order lookup, withdrawal, billing portal
+src/app/admin/                  order list (basic auth via src/proxy.ts)
+```
 
-## Learn More
+## Going live: payments and email
 
-To learn more about Next.js, take a look at the following resources:
+1. **Database.** Vercel → Storage → Neon (region Frankfurt), connect to the project. Migrations in `drizzle/` run automatically during each Vercel build (`scripts/migrate.mjs`).
+2. **Stripe** (start in test mode):
+   - `STRIPE_SECRET_KEY`.
+   - Webhook endpoint `https://<domain>/api/stripe/webhook` with events `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `invoice.paid`, `charge.refunded` → `STRIPE_WEBHOOK_SECRET`. Signatures are verified; processed events are recorded so redeliveries are ignored.
+   - Payment methods (dashboard): cards, Bancontact, iDEAL, PayPal, Apple Pay, Google Pay. Checkout uses whatever is enabled.
+   - Customer portal: activate it (subscribers manage subscriptions there).
+   - Stripe Tax: add registrations (Belgium; OSS for the other countries), then `STRIPE_AUTOMATIC_TAX=true`. Prices are VAT-inclusive; Stripe Tax extracts the right VAT for the destination.
+   - Local webhook testing: `stripe listen --forward-to localhost:3000/api/stripe/webhook`.
+3. **Email.** Resend API key, a verified sending domain, `EMAIL_FROM`, `CONTACT_TO_EMAIL`.
+4. **Admin.** `ADMIN_USER`, `ADMIN_PASSWORD`. `/admin` stays closed while these are unset.
+5. Fill every placeholder above, have the legal pages reviewed, then switch to live Stripe keys and set `NEXT_PUBLIC_ALLOW_INDEXING=true`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How checkout works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- The cart lives in the browser (localStorage). At checkout the server re-prices it from the catalogue, so the client never decides what is charged.
+- The customer picks the destination country in the cart; Checkout gets that country's rate (free above the threshold) and only accepts addresses in it.
+- One-off orders use payment mode. Carts with a subscription use subscription mode; shipping then becomes a recurring line on the same interval. Subscriptions with different intervals can't share one order.
+- Renewal invoices (`invoice.paid`, `subscription_cycle`) become their own orders for fulfilment.
 
-## Deploy on Vercel
+## Compliance notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Cosmetics claims: only brand-supplied, reviewed claims (`reviewed: true`) are shown. No medical claims.
+- Product pages show INCI, net content, PAO, warnings and the Responsible Person once filled in.
+- Online withdrawal function (EU 2023/2673, in force since 19 June 2026) at `/withdrawal`, with emailed acknowledgement, plus the model form.
+- No ODR-platform link: the EU ODR platform closed in July 2025.
+- Cookie banner appears only when an analytics tool is configured; analytics load only after consent.
+- Newsletter uses double opt-in; the confirmation time is stored as the consent record.
+- Reference ("was") prices: set `lowestPrice30dCents` on a variant to show the Omnibus lowest-price line.

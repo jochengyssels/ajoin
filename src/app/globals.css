@@ -48,6 +48,7 @@
   }
 }
 
+@layer base {
 :root {
   color-scheme: light;
 }
@@ -100,6 +101,7 @@ p {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
 }
 
 /* Long-form content (MDX pages, legal texts, blog). */

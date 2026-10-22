@@ -5,7 +5,18 @@ import type { Locale } from "@/i18n/routing";
 import type { Product } from "@/lib/catalogue/types";
 import { formatPrice } from "@/lib/format";
 
-export async function ProductCard({ product, locale, priority = false }: { product: Product; locale: Locale; priority?: boolean }) {
+export async function ProductCard({
+  product,
+  locale,
+  priority = false,
+  headingLevel = 3,
+}: {
+  product: Product;
+  locale: Locale;
+  priority?: boolean;
+  headingLevel?: 2 | 3;
+}) {
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   const t = await getTranslations({ locale, namespace: "shop" });
   const from = Math.min(...product.variants.map((v) => v.priceCents));
   const img = product.images[0];
@@ -22,11 +33,11 @@ export async function ProductCard({ product, locale, priority = false }: { produ
           className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
         />
       </div>
-      <h3 className="mt-4 text-xl">
+      <Heading className="mt-4 text-xl">
         <Link href={`/products/${product.slug}`} className="after:absolute after:inset-0 after:content-['']">
           {product.name[locale]}
         </Link>
-      </h3>
+      </Heading>
       <p className="mt-1 text-sm text-muted">{product.tagline[locale]}</p>
       <p className="mt-2 font-semibold tabular-nums">
         {product.variants.length > 1 ? t("from", { price: formatPrice(from, locale) }) : formatPrice(from, locale)}

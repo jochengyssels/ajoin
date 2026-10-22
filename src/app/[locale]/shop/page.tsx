@@ -28,7 +28,7 @@ export default async function ShopPage({ params }: PageProps<"/[locale]/shop">) 
     slug: p.slug,
     hairTypes: p.hairTypes,
     type: p.type,
-    card: <ProductCard product={p} locale={locale} priority={i < 2} />,
+    card: <ProductCard product={p} locale={locale} priority={i < 2} headingLevel={2} />,
   }));
 
   const grid = (
