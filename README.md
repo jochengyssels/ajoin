@@ -1,6 +1,6 @@
 # Ajoin & Shine — webshop
 
-Direct-to-consumer shop for Ajoin & Shine onion hair care. Belgium, the Netherlands, France and Italy, in Dutch (default), English, French and Italian.
+Direct-to-consumer shop for Ajoin & Shine, a single product: onion shampoo. Belgium, the Netherlands, France and Italy, in Dutch (default), English, French and Italian.
 
 Next.js 16 (App Router) · TypeScript · Tailwind CSS 4 · next-intl · Stripe Checkout · Drizzle + Neon Postgres · Resend · Vercel.
 
@@ -16,14 +16,13 @@ Search the code for `TODO_` to find every open item. In short:
 
 | What | Where |
 | --- | --- |
-| Product names, prices, INCI, copy, warnings, claims | `content/catalogue/products.ts` |
+| Shampoo price, size, net content, SKU, INCI, PAO, copy, warnings, claims, photos | `content/catalogue/products.ts`, `public/images/` |
 | Shipping carriers, rates, free-shipping threshold | `content/shipping.ts` |
 | Company and Responsible Person details | `src/lib/site.ts` |
 | Brand story, ingredient texts, FAQ answers | `content/pages/<locale>/*.mdx` |
 | Legal texts (drafts, need legal review) | `content/pages/<locale>/{terms,privacy,legal-notice,shipping}.mdx` |
-| Product photos (placeholders are sized 1200×1500) | `public/images/` |
 
-Unfilled values are hidden from visitors automatically (`pub()` in `src/lib/site.ts`, MDX comments in content), so the showcase looks finished while the gaps stay visible in code.
+No invented data is shown: without a real price the product shows "available soon" and can't be added to the cart; without confirmed rates the shipping page only lists the countries. Unfilled values are hidden from visitors automatically (`pub()` in `src/lib/site.ts`, MDX comments in content), so the showcase looks finished while the gaps stay visible in code.
 
 ## Local setup
 
@@ -44,7 +43,7 @@ npm run dev                  # http://localhost:3000 → redirects to /nl
 ## Structure
 
 ```
-content/catalogue/products.ts   products, bundles, subscription plans (typed)
+content/catalogue/products.ts   the shampoo (typed); bundles and subscribe-and-save are supported but empty
 content/shipping.ts             rates per country, free-shipping threshold
 content/pages/<locale>/         MDX: about, ingredients, faq, legal pages
 content/blog/                   journal posts (index.ts + one MDX per locale)
