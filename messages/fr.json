@@ -1,8 +1,8 @@
 {
   "meta": {
     "siteName": "Ajoin & Shine",
-    "title": "Ajoin & Shine — soins capillaires à l’oignon, âme de carnaval",
-    "description": "Shampooing, après-shampooing et huile capillaire à l’extrait d’oignon, dans l’esprit du carnaval d’Alost. Livré en Belgique, aux Pays-Bas, en France et en Italie."
+    "title": "Ajoin & Shine — shampooing à l’oignon, âme de carnaval",
+    "description": "Ajoin & Shine : shampooing à l’extrait d’oignon, dans l’esprit du carnaval d’Alost. Livré en Belgique, aux Pays-Bas, en France et en Italie."
   },
   "nav": {
     "shop": "Boutique",
@@ -18,16 +18,17 @@
     "closeMenu": "Fermer le menu",
     "skip": "Aller au contenu",
     "language": "Langue",
-    "home": "Accueil Ajoin & Shine"
+    "home": "Accueil Ajoin & Shine",
+    "product": "Le shampooing"
   },
   "sample": "Aperçu : la boutique ouvre bientôt. Vous pouvez tout découvrir, mais pas encore commander.",
   "home": {
     "heroTitle": "Le carnaval dans vos cheveux, tous les jours.",
-    "heroBody": "Shampooing, après-shampooing et huile capillaire à l’extrait d’oignon. Dans l’esprit d’Alost, dont les habitants sont surnommés les Ajuinen, les oignons, depuis des générations.",
+    "heroBody": "Un shampooing à l’extrait d’oignon, dans l’esprit d’Alost, dont les habitants sont surnommés les Ajuinen, les oignons, depuis des générations.",
     "heroCta": "Découvrir le shampooing",
     "heroSecondary": "Pourquoi l’oignon ?",
     "bestsellerTitle": "Commencez par le shampooing",
-    "bestsellerCta": "Voir le produit",
+    "bestsellerCta": "Découvrir le shampooing",
     "whyTitle": "Pourquoi l’oignon ?",
     "whyBody": "À Alost, l’oignon est un surnom, une mascotte et, au carnaval, une pluie qui tombe sur la Grand-Place. Nous l’avons mis dans un flacon que vous aurez envie d’utiliser tous les jours.",
     "whyCta": "En savoir plus sur les ingrédients",
@@ -41,7 +42,8 @@
     "socialTitle": "L’avis de nos clients",
     "socialEmpty": "Les avis apparaîtront ici dès que les premiers clients les auront rédigés.",
     "bundlesTitle": "Mieux ensemble",
-    "bundlesCta": "Voir tous les coffrets"
+    "bundlesCta": "Voir tous les coffrets",
+    "productTitle": "Un seul shampooing. C’est toute la gamme."
   },
   "newsletter": {
     "title": "Soyez les premiers informés",
@@ -112,7 +114,9 @@
     "crossSell": "S’associe bien avec",
     "gallery": "Images du produit",
     "showImage": "Afficher l’image {n}",
-    "notFound": "Ce produit n’existe pas ou n’est plus disponible."
+    "notFound": "Ce produit n’existe pas ou n’est plus disponible.",
+    "comingSoon": "Bientôt disponible",
+    "comingSoonNote": "Laissez votre e-mail ci-dessous et nous vous préviendrons dès sa mise en vente."
   },
   "bundles": {
     "title": "Coffrets",
@@ -125,7 +129,7 @@
     "title": "Votre panier",
     "close": "Fermer le panier",
     "empty": "Votre panier est vide.",
-    "emptyCta": "Aller à la boutique",
+    "emptyCta": "Voir le shampooing",
     "subtotal": "Sous-total",
     "subtotalNote": "TVA incl. Les codes promo se saisissent au paiement.",
     "freeShippingRemaining": "Plus que {amount} pour la livraison gratuite",
@@ -154,7 +158,7 @@
     "cancelTitle": "Paiement annulé",
     "cancelBody": "Aucun montant n’a été débité. Votre panier vous attend quand vous serez prêt.",
     "backToCart": "Retour au panier",
-    "continueShopping": "Continuer mes achats",
+    "continueShopping": "Retour à l’accueil",
     "shippingLine": "Livraison"
   },
   "orders": {
@@ -220,7 +224,7 @@
     "error": "Votre message n’a pas pu être envoyé. Réessayez ou écrivez-nous directement par e-mail."
   },
   "footer": {
-    "tagline": "Soins capillaires à l’oignon, âme de carnaval.",
+    "tagline": "Le shampooing à l’oignon, âme de carnaval.",
     "shop": "Boutique",
     "help": "Aide",
     "legal": "Informations légales",

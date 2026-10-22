@@ -6,7 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { freeShippingProgress, shippingCostCents } from "@/lib/cart/pricing";
-import { shippingRates, type ShippingCountry } from "../../../content/shipping";
+import { shippingPlaceholder, shippingRates, type ShippingCountry } from "../../../content/shipping";
+import { SHAMPOO_SLUG } from "../../../content/catalogue/products";
 import { formatPrice } from "@/lib/format";
 import { Button, buttonClass } from "@/components/ui/button";
 import { Price } from "@/components/ui/price";
@@ -79,7 +80,7 @@ export function CartDrawer() {
           </button>
         </div>
 
-        {priced.lines.length > 0 && (
+        {priced.lines.length > 0 && !shippingPlaceholder && (
           <div className="border-b border-line px-5 py-3" aria-live="polite">
             <p className="text-sm">
               {ship.qualifies
@@ -103,7 +104,7 @@ export function CartDrawer() {
           {priced.lines.length === 0 ? (
             <div className="py-16 text-center">
               <p className="mb-6 text-muted">{t("empty")}</p>
-              <Link href="/shop" onClick={close} className={buttonClass("secondary")}>
+              <Link href={`/products/${SHAMPOO_SLUG}`} onClick={close} className={buttonClass("secondary")}>
                 {t("emptyCta")}
               </Link>
             </div>
@@ -181,14 +182,18 @@ export function CartDrawer() {
                 <dt>{t("subtotal")}</dt>
                 <dd className="tabular-nums">{formatPrice(priced.subtotalCents, locale)}</dd>
               </div>
-              <div className="flex justify-between">
-                <dt>{t("shippingCost")}</dt>
-                <dd className="tabular-nums">{shippingCents === 0 ? t("shippingFree") : formatPrice(shippingCents, locale)}</dd>
-              </div>
-              <div className="flex items-baseline justify-between pt-1 text-base font-semibold">
-                <dt>{t("total")}</dt>
-                <dd className="text-xl tabular-nums">{formatPrice(priced.subtotalCents + shippingCents, locale)}</dd>
-              </div>
+              {!shippingPlaceholder && (
+                <>
+                  <div className="flex justify-between">
+                    <dt>{t("shippingCost")}</dt>
+                    <dd className="tabular-nums">{shippingCents === 0 ? t("shippingFree") : formatPrice(shippingCents, locale)}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between pt-1 text-base font-semibold">
+                    <dt>{t("total")}</dt>
+                    <dd className="text-xl tabular-nums">{formatPrice(priced.subtotalCents + shippingCents, locale)}</dd>
+                  </div>
+                </>
+              )}
             </dl>
             <p className="mt-1 text-xs text-muted">{t("subtotalNote")}</p>
             {error && (

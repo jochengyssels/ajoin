@@ -1,9 +1,35 @@
 import { describe, expect, it } from "vitest";
 import { priceCart, type CatalogueSnapshot } from "@/lib/cart/pricing";
 import { buildCheckoutParams } from "@/lib/stripe/checkout";
-import { bundles, products, subscriptionPlans } from "../content/catalogue/products";
+import type { Product } from "@/lib/catalogue/types";
 
-const cat: CatalogueSnapshot = { products, bundles, plans: subscriptionPlans };
+// Fixture catalogue, independent of the live product data.
+const L = (s: string) => ({ en: s, fr: s, nl: s, it: s });
+const product = (slug: string, sku: string, priceCents: number): Product => ({
+  slug,
+  type: "shampoo",
+  hairTypes: [],
+  name: L(slug),
+  tagline: L(""),
+  description: L(""),
+  howToUse: L(""),
+  inci: "",
+  paoMonths: 12,
+  warnings: L(""),
+  claims: [],
+  faq: [],
+  images: [],
+  variants: [{ sku, size: L("250 ml"), netContent: "250 ml", priceCents, subscribable: true }],
+  crossSell: [],
+});
+const cat: CatalogueSnapshot = {
+  products: [product("shampoo", "SH", 2490), product("other", "OT", 2290)],
+  bundles: [],
+  plans: [
+    { intervalWeeks: 4, discountPercent: 10 },
+    { intervalWeeks: 8, discountPercent: 10 },
+  ],
+};
 const rate = { country: "BE" as const, carrier: "Carrier", amountCents: 495, minDays: 1, maxDays: 3 };
 const base = { locale: "nl" as const, rate, freeShippingThresholdCents: 4000, siteUrl: "https://shop.test", automaticTax: true, shippingLabel: "Verzending" };
 
@@ -13,7 +39,7 @@ describe("buildCheckoutParams", () => {
   });
 
   it("builds a payment session with VAT-inclusive prices and paid shipping under the threshold", () => {
-    const priced = priceCart({ lines: [{ kind: "variant", sku: "AJ-SH-250", qty: 1 }] }, cat);
+    const priced = priceCart({ lines: [{ kind: "variant", sku: "SH", qty: 1 }] }, cat);
     const p = buildCheckoutParams({ ...base, priced });
     if (typeof p === "string") throw new Error(p);
     expect(p.mode).toBe("payment");
@@ -26,14 +52,14 @@ describe("buildCheckoutParams", () => {
   });
 
   it("ships free at the threshold", () => {
-    const priced = priceCart({ lines: [{ kind: "variant", sku: "AJ-SH-250", qty: 2 }] }, cat);
+    const priced = priceCart({ lines: [{ kind: "variant", sku: "SH", qty: 2 }] }, cat);
     const p = buildCheckoutParams({ ...base, priced });
     if (typeof p === "string") throw new Error(p);
     expect(p.shipping_options?.[0].shipping_rate_data?.fixed_amount?.amount).toBe(0);
   });
 
   it("uses subscription mode with a recurring shipping line", () => {
-    const priced = priceCart({ lines: [{ kind: "variant", sku: "AJ-SH-250", qty: 1, intervalWeeks: 4 }] }, cat);
+    const priced = priceCart({ lines: [{ kind: "variant", sku: "SH", qty: 1, intervalWeeks: 4 }] }, cat);
     const p = buildCheckoutParams({ ...base, priced });
     if (typeof p === "string") throw new Error(p);
     expect(p.mode).toBe("subscription");
@@ -46,8 +72,8 @@ describe("buildCheckoutParams", () => {
     const priced = priceCart(
       {
         lines: [
-          { kind: "variant", sku: "AJ-SH-250", qty: 1, intervalWeeks: 4 },
-          { kind: "variant", sku: "AJ-CO-250", qty: 1, intervalWeeks: 8 },
+          { kind: "variant", sku: "SH", qty: 1, intervalWeeks: 4 },
+          { kind: "variant", sku: "OT", qty: 1, intervalWeeks: 8 },
         ],
       },
       cat,

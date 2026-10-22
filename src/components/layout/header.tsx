@@ -7,10 +7,10 @@ import { useCart } from "@/components/cart/cart-provider";
 import { Container } from "@/components/ui/container";
 import { LocaleSwitcher } from "./locale-switcher";
 import { Wordmark } from "./wordmark";
+import { SHAMPOO_SLUG } from "../../../content/catalogue/products";
 
 const links = [
-  { href: "/shop", key: "shop" },
-  { href: "/bundles", key: "bundles" },
+  { href: `/products/${SHAMPOO_SLUG}`, key: "product" },
   { href: "/ingredients", key: "ingredients" },
   { href: "/about", key: "about" },
   { href: "/blog", key: "blog" },

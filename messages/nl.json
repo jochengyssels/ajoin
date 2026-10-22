@@ -1,8 +1,8 @@
 {
   "meta": {
     "siteName": "Ajoin & Shine",
-    "title": "Ajoin & Shine — haarverzorging met ajuin en een carnavalshart",
-    "description": "Shampoo, conditioner en haarolie met ajuinextract, in de geest van Aalst carnaval. Geleverd in België, Nederland, Frankrijk en Italië."
+    "title": "Ajoin & Shine — ajuinshampoo met een carnavalshart",
+    "description": "Ajoin & Shine: shampoo met ajuinextract, in de geest van Aalst carnaval. Geleverd in België, Nederland, Frankrijk en Italië."
   },
   "nav": {
     "shop": "Shop",
@@ -18,16 +18,17 @@
     "closeMenu": "Menu sluiten",
     "skip": "Naar de inhoud",
     "language": "Taal",
-    "home": "Ajoin & Shine startpagina"
+    "home": "Ajoin & Shine startpagina",
+    "product": "De shampoo"
   },
   "sample": "Voorproefje: de webshop opent binnenkort. Je kunt alles bekijken, maar nog niet bestellen.",
   "home": {
     "heroTitle": "Elke dag carnaval in je haar.",
-    "heroBody": "Shampoo, conditioner en haarolie met ajuinextract. Gemaakt in de geest van Aalst, waar ze al generaties de Ajuinen heten.",
+    "heroBody": "Shampoo met ajuinextract, in de geest van Aalst, waar ze al generaties de Ajuinen heten.",
     "heroCta": "Bekijk de shampoo",
     "heroSecondary": "Waarom ajuin?",
     "bestsellerTitle": "Begin met de shampoo",
-    "bestsellerCta": "Bekijk product",
+    "bestsellerCta": "Ontdek de shampoo",
     "whyTitle": "Waarom ajuin?",
     "whyBody": "In Aalst is de ajuin een bijnaam, een mascotte en met carnaval iets dat op de Grote Markt naar beneden regent. Wij stopten hem in een fles die je elke dag wilt gebruiken.",
     "whyCta": "Lees meer over de ingrediënten",
@@ -41,7 +42,8 @@
     "socialTitle": "Wat klanten zeggen",
     "socialEmpty": "Reviews verschijnen hier zodra de eerste klanten ze geschreven hebben.",
     "bundlesTitle": "Beter samen",
-    "bundlesCta": "Bekijk alle sets"
+    "bundlesCta": "Bekijk alle sets",
+    "productTitle": "Eén shampoo. Dat is het hele gamma."
   },
   "newsletter": {
     "title": "Hoor het als eerste",
@@ -112,7 +114,9 @@
     "crossSell": "Past goed bij",
     "gallery": "Productafbeeldingen",
     "showImage": "Toon afbeelding {n}",
-    "notFound": "Dit product bestaat niet of is niet meer beschikbaar."
+    "notFound": "Dit product bestaat niet of is niet meer beschikbaar.",
+    "comingSoon": "Binnenkort verkrijgbaar",
+    "comingSoonNote": "Laat hieronder je e-mailadres achter en we laten je weten wanneer hij te koop is."
   },
   "bundles": {
     "title": "Sets",
@@ -125,7 +129,7 @@
     "title": "Je winkelmandje",
     "close": "Winkelmandje sluiten",
     "empty": "Je winkelmandje is leeg.",
-    "emptyCta": "Naar de shop",
+    "emptyCta": "Bekijk de shampoo",
     "subtotal": "Subtotaal",
     "subtotalNote": "Incl. btw. Kortingscodes vul je in bij het afrekenen.",
     "freeShippingRemaining": "Nog {amount} tot gratis verzending",
@@ -154,7 +158,7 @@
     "cancelTitle": "Afrekenen geannuleerd",
     "cancelBody": "Er is niets afgeschreven. Je winkelmandje staat klaar wanneer jij dat bent.",
     "backToCart": "Terug naar winkelmandje",
-    "continueShopping": "Verder winkelen",
+    "continueShopping": "Terug naar de startpagina",
     "shippingLine": "Verzending"
   },
   "orders": {
@@ -220,7 +224,7 @@
     "error": "Je bericht kon niet worden verstuurd. Probeer het opnieuw of mail ons rechtstreeks."
   },
   "footer": {
-    "tagline": "Haarverzorging met ajuin en een carnavalshart.",
+    "tagline": "Ajuinshampoo met een carnavalshart.",
     "shop": "Shop",
     "help": "Hulp",
     "legal": "Juridisch",

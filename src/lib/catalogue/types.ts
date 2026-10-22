@@ -48,7 +48,7 @@ export interface Product {
   /** Full INCI list, in the order printed on pack. INCI names are not translated. */
   inci: string;
   /** Period after opening in months (the open-jar symbol). */
-  paoMonths: number;
+  paoMonths: number | null;
   warnings: Localized;
   claims: Claim[];
   faq: { q: Localized; a: Localized }[];

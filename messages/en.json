@@ -1,8 +1,8 @@
 {
   "meta": {
     "siteName": "Ajoin & Shine",
-    "title": "Ajoin & Shine — onion hair care with a carnival soul",
-    "description": "Shampoo, conditioner and hair oil made with onion extract, in the spirit of Aalst carnival. Shipped to Belgium, the Netherlands, France and Italy."
+    "title": "Ajoin & Shine — onion shampoo with a carnival soul",
+    "description": "Ajoin & Shine: shampoo made with onion extract, in the spirit of Aalst carnival. Shipped to Belgium, the Netherlands, France and Italy."
   },
   "nav": {
     "shop": "Shop",
@@ -18,16 +18,17 @@
     "closeMenu": "Close menu",
     "skip": "Skip to content",
     "language": "Language",
-    "home": "Ajoin & Shine home"
+    "home": "Ajoin & Shine home",
+    "product": "The shampoo"
   },
   "sample": "Preview: the shop opens soon. You can browse everything, but ordering isn't possible yet.",
   "home": {
     "heroTitle": "Every day is carnival for your hair.",
-    "heroBody": "Shampoo, conditioner and hair oil with onion extract. Made in the spirit of Aalst, where the locals have been called the Ajuinen, the onions, for generations.",
+    "heroBody": "Shampoo made with onion extract, in the spirit of Aalst, where the locals have been called the Ajuinen, the onions, for generations.",
     "heroCta": "Shop the shampoo",
     "heroSecondary": "Why onion?",
     "bestsellerTitle": "Start with the shampoo",
-    "bestsellerCta": "View product",
+    "bestsellerCta": "Discover the shampoo",
     "whyTitle": "Why onion?",
     "whyBody": "In Aalst the onion is a nickname, a mascot and, at carnival, something that rains down on the Grote Markt. We put it in a bottle you’ll want to use every day.",
     "whyCta": "Read about the ingredients",
@@ -41,7 +42,8 @@
     "socialTitle": "What customers say",
     "socialEmpty": "Reviews appear here once the first customers have written them.",
     "bundlesTitle": "Better together",
-    "bundlesCta": "See all bundles"
+    "bundlesCta": "See all bundles",
+    "productTitle": "One shampoo. That’s the whole range."
   },
   "newsletter": {
     "title": "Hear it first",
@@ -112,7 +114,9 @@
     "crossSell": "Goes well with",
     "gallery": "Product images",
     "showImage": "Show image {n}",
-    "notFound": "This product doesn't exist or is no longer available."
+    "notFound": "This product doesn't exist or is no longer available.",
+    "comingSoon": "Available soon",
+    "comingSoonNote": "Leave your email below and we’ll tell you when it’s on sale."
   },
   "bundles": {
     "title": "Bundles",
@@ -125,7 +129,7 @@
     "title": "Your cart",
     "close": "Close cart",
     "empty": "Your cart is empty.",
-    "emptyCta": "Go to the shop",
+    "emptyCta": "View the shampoo",
     "subtotal": "Subtotal",
     "subtotalNote": "Incl. VAT. Promo codes can be entered at checkout.",
     "freeShippingRemaining": "Add {amount} for free shipping",
@@ -154,7 +158,7 @@
     "cancelTitle": "Checkout cancelled",
     "cancelBody": "Nothing was charged. Your cart is still here when you're ready.",
     "backToCart": "Return to cart",
-    "continueShopping": "Continue shopping",
+    "continueShopping": "Back to the home page",
     "shippingLine": "Shipping"
   },
   "orders": {
@@ -220,7 +224,7 @@
     "error": "Your message couldn't be sent. Try again, or email us directly."
   },
   "footer": {
-    "tagline": "Onion hair care with a carnival soul.",
+    "tagline": "Onion shampoo with a carnival soul.",
     "shop": "Shop",
     "help": "Help",
     "legal": "Legal",

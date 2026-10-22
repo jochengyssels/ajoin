@@ -3,12 +3,12 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { catalogue } from "@/lib/catalogue";
 import { formatPrice } from "@/lib/format";
+import { pub } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button";
 import { OnionRings } from "@/components/ui/onion-rings";
 import { Harlequin } from "@/components/ui/harlequin";
 import { Ajuinworp } from "@/components/ui/ajuinworp";
-import { ProductCard } from "@/components/product/product-card";
 import { NewsletterForm } from "@/components/forms/newsletter-form";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -17,11 +17,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "home" });
   const nl = await getTranslations({ locale, namespace: "newsletter" });
-  const ts = await getTranslations({ locale, namespace: "shop" });
 
-  const products = await catalogue.listProducts();
-  const bestseller = products.find((p) => p.bestseller) ?? products[0];
-  const steps = ["one", "two", "three"] as const;
+  const [product] = await catalogue.listProducts();
+  const variant = product.variants[0];
+  const howToUse = pub(product.howToUse[locale]);
 
   return (
     <>
@@ -33,7 +32,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             <h1 className="sign-type text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[5.25rem]">{t("heroTitle")}</h1>
             <p className="mt-6 max-w-md text-lg text-flesh/85">{t("heroBody")}</p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <ButtonLink href={`/products/${bestseller.slug}`} className="bg-skin text-ink hover:bg-paper">
+              <ButtonLink href={`/products/${product.slug}`} className="bg-skin text-ink hover:bg-paper">
                 {t("heroCta")}
               </ButtonLink>
               <ButtonLink href="/ingredients" variant="ghost" className="text-paper decoration-skin hover:decoration-paper">
@@ -62,27 +61,27 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <Harlequin />
       </section>
 
-      {/* Bestseller */}
-      <section aria-labelledby="bestseller-title" className="bg-paper/60 py-16 md:py-24">
+      {/* The product */}
+      <section aria-labelledby="product-title" className="bg-paper/60 py-16 md:py-24">
         <Container className="grid items-center gap-10 md:grid-cols-2">
           <Image
-            src={bestseller.images[0].src}
-            alt={bestseller.images[0].alt[locale]}
-            width={bestseller.images[0].width}
-            height={bestseller.images[0].height}
+            src={product.images[0].src}
+            alt={product.images[0].alt[locale]}
+            width={product.images[0].width}
+            height={product.images[0].height}
             sizes="(min-width: 768px) 45vw, 90vw"
             className="aspect-[4/5] w-full max-w-md rounded-card object-cover md:justify-self-end"
           />
           <div>
-            <h2 id="bestseller-title" className="text-3xl md:text-4xl">
-              {t("bestsellerTitle")}
+            <h2 id="product-title" className="text-3xl md:text-4xl">
+              {t("productTitle")}
             </h2>
-            <p className="mt-4 text-xl">{bestseller.name[locale]}</p>
-            <p className="mt-2 max-w-sm text-muted">{bestseller.tagline[locale]}</p>
-            <p className="mt-4 text-lg font-semibold tabular-nums">
-              {formatPrice(Math.min(...bestseller.variants.map((v) => v.priceCents)), locale)}
-            </p>
-            <ButtonLink href={`/products/${bestseller.slug}`} className="mt-6">
+            <p className="mt-4 text-xl">{product.name[locale]}</p>
+            <p className="mt-2 max-w-sm text-muted">{product.tagline[locale]}</p>
+            {variant && !variant.pricePlaceholder && (
+              <p className="mt-4 text-lg font-semibold tabular-nums">{formatPrice(variant.priceCents, locale)}</p>
+            )}
+            <ButtonLink href={`/products/${product.slug}`} className="mt-6">
               {t("bestsellerCta")}
             </ButtonLink>
           </div>
@@ -104,55 +103,17 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </Container>
       </section>
 
-      {/* How to use: a real sequence, so it is numbered. */}
-      <section aria-labelledby="how-title" className="bg-onion-dark py-16 text-flesh md:py-24">
-        <Container>
-          <h2 id="how-title" className="text-3xl md:text-4xl">
-            {t("howTitle")}
-          </h2>
-          <ol className="mt-10 grid gap-8 md:grid-cols-3">
-            {steps.map((s, i) => (
-              <li key={s} className="border-t border-skin/60 pt-5">
-                <span className="font-display text-4xl text-skin" aria-hidden="true">
-                  {i + 1}
-                </span>
-                <p className="mt-3 max-w-xs">{t(`howSteps.${s}`)}</p>
-              </li>
-            ))}
-          </ol>
-        </Container>
-      </section>
-
-      {/* Shop row */}
-      <section aria-labelledby="range-title" className="py-16 md:py-24">
-        <Container>
-          <div className="flex items-end justify-between gap-4">
-            <h2 id="range-title" className="text-3xl md:text-4xl">
-              {ts("title")}
+      {/* How to use: the brand's own text, shown once it exists. */}
+      {howToUse && (
+        <section aria-labelledby="how-title" className="bg-onion-dark py-16 text-flesh md:py-24">
+          <Container className="grid gap-8 md:grid-cols-[1fr_1.4fr] md:gap-16">
+            <h2 id="how-title" className="text-3xl md:text-4xl">
+              {t("howTitle")}
             </h2>
-            <ButtonLink href="/bundles" variant="ghost">
-              {t("bundlesCta")}
-            </ButtonLink>
-          </div>
-          <ul className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((p) => (
-              <li key={p.slug}>
-                <ProductCard product={p} locale={locale} />
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
-      {/* Social proof: empty until there are real reviews. */}
-      <section aria-labelledby="reviews-title" className="border-y border-line py-14">
-        <Container>
-          <h2 id="reviews-title" className="text-2xl">
-            {t("socialTitle")}
-          </h2>
-          <p className="mt-3 text-muted">{t("socialEmpty")}</p>
-        </Container>
-      </section>
+            <p className="max-w-[60ch] text-lg">{howToUse}</p>
+          </Container>
+        </section>
+      )}
 
       {/* Newsletter */}
       <section aria-labelledby="newsletter-title" className="py-16 md:py-24">

@@ -1,6 +1,6 @@
 import { createTranslator } from "next-intl";
 import { formatPrice } from "@/lib/format";
-import { freeShippingThresholdCents, shippingRates } from "../../../content/shipping";
+import { freeShippingThresholdCents, shippingPlaceholder, shippingRates } from "../../../content/shipping";
 import en from "../../../messages/en.json";
 import fr from "../../../messages/fr.json";
 import nl from "../../../messages/nl.json";
@@ -11,6 +11,16 @@ const all = { en, fr, nl, it };
 /** Shipping rates straight from content/shipping.ts, so the page and checkout never disagree. */
 export function ShippingTable({ locale }: { locale: keyof typeof all }) {
   const t = createTranslator({ locale, messages: all[locale] });
+  // Until the brand confirms rates, list only where we ship: no invented prices or delivery times.
+  if (shippingPlaceholder) {
+    return (
+      <ul>
+        {shippingRates.map((r) => (
+          <li key={r.country}>{t(`countries.${r.country}`)}</li>
+        ))}
+      </ul>
+    );
+  }
   return (
     <table>
       <thead>

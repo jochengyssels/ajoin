@@ -9,8 +9,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const products = await catalogue.listProducts();
   const paths = [
     "",
-    "/shop",
-    "/bundles",
     "/blog",
     "/contact",
     "/withdrawal",

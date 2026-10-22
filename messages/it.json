@@ -1,8 +1,8 @@
 {
   "meta": {
     "siteName": "Ajoin & Shine",
-    "title": "Ajoin & Shine — cura dei capelli alla cipolla, anima di carnevale",
-    "description": "Shampoo, balsamo e olio per capelli all’estratto di cipolla, nello spirito del carnevale di Aalst. Spedizione in Belgio, Paesi Bassi, Francia e Italia."
+    "title": "Ajoin & Shine — shampoo alla cipolla, anima di carnevale",
+    "description": "Ajoin & Shine: shampoo all’estratto di cipolla, nello spirito del carnevale di Aalst. Spedizione in Belgio, Paesi Bassi, Francia e Italia."
   },
   "nav": {
     "shop": "Shop",
@@ -18,16 +18,17 @@
     "closeMenu": "Chiudi il menu",
     "skip": "Vai al contenuto",
     "language": "Lingua",
-    "home": "Home Ajoin & Shine"
+    "home": "Home Ajoin & Shine",
+    "product": "Lo shampoo"
   },
   "sample": "Anteprima: il negozio apre presto. Puoi guardare tutto, ma non ancora ordinare.",
   "home": {
     "heroTitle": "Ogni giorno è carnevale per i tuoi capelli.",
-    "heroBody": "Shampoo, balsamo e olio per capelli all’estratto di cipolla. Nello spirito di Aalst, dove gli abitanti si chiamano Ajuinen, le cipolle, da generazioni.",
+    "heroBody": "Shampoo all’estratto di cipolla, nello spirito di Aalst, dove gli abitanti si chiamano Ajuinen, le cipolle, da generazioni.",
     "heroCta": "Scopri lo shampoo",
     "heroSecondary": "Perché la cipolla?",
     "bestsellerTitle": "Inizia dallo shampoo",
-    "bestsellerCta": "Vedi il prodotto",
+    "bestsellerCta": "Scopri lo shampoo",
     "whyTitle": "Perché la cipolla?",
     "whyBody": "Ad Aalst la cipolla è un soprannome, una mascotte e, a carnevale, qualcosa che piove sulla Grote Markt. L’abbiamo messa in un flacone che vorrai usare ogni giorno.",
     "whyCta": "Scopri gli ingredienti",
@@ -41,7 +42,8 @@
     "socialTitle": "Cosa dicono i clienti",
     "socialEmpty": "Le recensioni appariranno qui non appena i primi clienti le avranno scritte.",
     "bundlesTitle": "Meglio insieme",
-    "bundlesCta": "Vedi tutti i kit"
+    "bundlesCta": "Vedi tutti i kit",
+    "productTitle": "Un solo shampoo. È tutta la gamma."
   },
   "newsletter": {
     "title": "Scoprilo per primo",
@@ -112,7 +114,9 @@
     "crossSell": "Si abbina bene con",
     "gallery": "Immagini del prodotto",
     "showImage": "Mostra l’immagine {n}",
-    "notFound": "Questo prodotto non esiste o non è più disponibile."
+    "notFound": "Questo prodotto non esiste o non è più disponibile.",
+    "comingSoon": "Presto disponibile",
+    "comingSoonNote": "Lascia la tua e-mail qui sotto e ti avviseremo quando sarà in vendita."
   },
   "bundles": {
     "title": "Kit",
@@ -125,7 +129,7 @@
     "title": "Il tuo carrello",
     "close": "Chiudi il carrello",
     "empty": "Il tuo carrello è vuoto.",
-    "emptyCta": "Vai allo shop",
+    "emptyCta": "Vedi lo shampoo",
     "subtotal": "Subtotale",
     "subtotalNote": "IVA inclusa. I codici sconto si inseriscono al pagamento.",
     "freeShippingRemaining": "Aggiungi {amount} per la spedizione gratuita",
@@ -154,7 +158,7 @@
     "cancelTitle": "Checkout annullato",
     "cancelBody": "Non è stato addebitato nulla. Il tuo carrello ti aspetta quando sei pronto.",
     "backToCart": "Torna al carrello",
-    "continueShopping": "Continua lo shopping",
+    "continueShopping": "Torna alla home page",
     "shippingLine": "Spedizione"
   },
   "orders": {
@@ -220,7 +224,7 @@
     "error": "Non è stato possibile inviare il messaggio. Riprova o scrivici direttamente via email."
   },
   "footer": {
-    "tagline": "Cura dei capelli alla cipolla, anima di carnevale.",
+    "tagline": "Shampoo alla cipolla, anima di carnevale.",
     "shop": "Shop",
     "help": "Assistenza",
     "legal": "Informazioni legali",

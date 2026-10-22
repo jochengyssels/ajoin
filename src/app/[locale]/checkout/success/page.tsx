@@ -14,7 +14,7 @@ export default async function SuccessPage({ params }: PageProps<"/[locale]/check
   return (
     <SimplePage title={t("successTitle")} intro={t("successBody")}>
       <ClearCart />
-      <ButtonLink href="/shop" variant="secondary">
+      <ButtonLink href="/" variant="secondary">
         {t("continueShopping")}
       </ButtonLink>
     </SimplePage>

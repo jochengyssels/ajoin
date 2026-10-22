@@ -33,6 +33,15 @@ export function PurchasePanel({ product, plans }: { product: Product; plans: Sub
       checked ? "border-onion bg-white" : "border-line bg-white/60 hover:border-onion/60"
     }`;
 
+  // No real price yet: show nothing invented, and don't let it into the cart.
+  if (variant.pricePlaceholder) {
+    return (
+      <p className="inline-flex min-h-12 items-center rounded-pill bg-paper px-6 font-semibold" data-testid="coming-soon">
+        {t("comingSoon")}
+      </p>
+    );
+  }
+
   return (
     <form
       onSubmit={(e) => {

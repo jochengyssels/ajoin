@@ -6,6 +6,7 @@ import { ConsentSettingsButton } from "@/components/consent/consent";
 
 const analyticsConfigured = Boolean(process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || process.env.NEXT_PUBLIC_GA_ID);
 import { Wordmark } from "./wordmark";
+import { SHAMPOO_SLUG } from "../../../content/catalogue/products";
 import { Harlequin } from "@/components/ui/harlequin";
 
 export async function Footer() {
@@ -16,8 +17,7 @@ export async function Footer() {
     {
       title: t("shop"),
       links: [
-        { href: "/shop", label: nav("shop") },
-        { href: "/bundles", label: nav("bundles") },
+        { href: `/products/${SHAMPOO_SLUG}`, label: nav("product") },
         { href: "/ingredients", label: nav("ingredients") },
         { href: "/about", label: nav("about") },
         { href: "/blog", label: nav("blog") },

@@ -9,7 +9,6 @@ import { pub, site } from "@/lib/site";
 import { Container } from "@/components/ui/container";
 import { Gallery } from "@/components/product/gallery";
 import { PurchasePanel } from "@/components/product/purchase-panel";
-import { ProductCard } from "@/components/product/product-card";
 import { JsonLd } from "@/components/seo/json-ld";
 
 export async function generateStaticParams() {
@@ -55,10 +54,17 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/produ
   const t = await getTranslations({ locale, namespace: "product" });
   const nav = await getTranslations({ locale, namespace: "nav" });
   const plans = await catalogue.subscriptionPlans();
-  const all = await catalogue.listProducts();
-  const crossSell = product.crossSell.map((s) => all.find((p) => p.slug === s)).filter((p) => p !== undefined);
   const claims = product.claims.filter((c) => c.reviewed).map((c) => c.text[locale]);
   const faq = product.faq.filter((f) => pub(f.a[locale]));
+  const hasDetails =
+    product.variants.some((v) => pub(v.netContent)) ||
+    product.paoMonths !== null ||
+    Boolean(pub(product.warnings[locale])) ||
+    Boolean(pub(site.responsiblePerson.name));
+  const hasSections =
+    hasDetails ||
+    faq.length > 0 ||
+    Boolean(pub(product.description[locale]) || pub(product.howToUse[locale]) || pub(product.inci));
 
   const url = absoluteUrl(locale, `/products/${slug}`);
   const jsonLd = [
@@ -71,7 +77,7 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/produ
       brand: { "@type": "Brand", name: site.name },
       sku: product.variants[0].sku,
       url,
-      offers: product.variants.map((v) => ({
+      offers: product.variants.filter((v) => !v.pricePlaceholder).map((v) => ({
         "@type": "Offer",
         sku: v.sku,
         price: (v.priceCents / 100).toFixed(2),
@@ -86,8 +92,7 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/produ
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: site.name, item: absoluteUrl(locale, "") },
-        { "@type": "ListItem", position: 2, name: nav("shop"), item: absoluteUrl(locale, "/shop") },
-        { "@type": "ListItem", position: 3, name: product.name[locale], item: url },
+        { "@type": "ListItem", position: 2, name: product.name[locale], item: url },
       ],
     },
   ];
@@ -99,8 +104,8 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/produ
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted">
           <ol className="flex flex-wrap gap-2">
             <li>
-              <Link href="/shop" className="underline underline-offset-2 hover:text-onion">
-                {nav("shop")}
+              <Link href="/" className="underline underline-offset-2 hover:text-onion">
+                {site.name}
               </Link>
               <span aria-hidden="true" className="ml-2">/</span>
             </li>
@@ -128,7 +133,7 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/produ
               <PurchasePanel product={product} plans={plans} />
             </div>
 
-            <div className="mt-10 border-t border-line">
+            <div className={hasSections ? "mt-10 border-t border-line" : "hidden"}>
               {pub(product.description[locale]) && (
                 <Section title={t("description")} open>
                   <p>{product.description[locale]}</p>
@@ -144,12 +149,21 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/produ
                   <p className="text-sm">{product.inci}</p>
                 </Section>
               )}
+              {hasDetails && (
               <Section title={t("details")}>
                 <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm">
-                  <dt className="font-semibold">{t("netContent")}</dt>
-                  <dd>{product.variants.map((v) => v.netContent).join(" / ")}</dd>
-                  <dt className="font-semibold">PAO</dt>
-                  <dd>{t("pao", { months: product.paoMonths })}</dd>
+                  {product.variants.some((v) => pub(v.netContent)) && (
+                    <>
+                      <dt className="font-semibold">{t("netContent")}</dt>
+                      <dd>{product.variants.map((v) => pub(v.netContent)).filter(Boolean).join(" / ")}</dd>
+                    </>
+                  )}
+                  {product.paoMonths !== null && (
+                    <>
+                      <dt className="font-semibold">PAO</dt>
+                      <dd>{t("pao", { months: product.paoMonths })}</dd>
+                    </>
+                  )}
                   {pub(product.warnings[locale]) && (
                     <>
                       <dt className="font-semibold">{t("warnings")}</dt>
@@ -168,6 +182,7 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/produ
                   )}
                 </dl>
               </Section>
+              )}
               {faq.length > 0 && (
                 <Section title={t("faq")}>
                   <dl className="space-y-4">
@@ -184,20 +199,6 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/produ
           </div>
         </div>
 
-        {crossSell.length > 0 && (
-          <section aria-labelledby="cross-sell" className="mt-20">
-            <h2 id="cross-sell" className="text-3xl">
-              {t("crossSell")}
-            </h2>
-            <ul className="mt-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-              {crossSell.map((p) => (
-                <li key={p.slug}>
-                  <ProductCard product={p} locale={locale} />
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
       </Container>
     </>
   );
