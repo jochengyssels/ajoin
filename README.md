@@ -37,7 +37,7 @@ npm run dev                  # http://localhost:3000 → redirects to /nl
 | --- | --- |
 | `npm run dev` / `build` / `start` | Next.js |
 | `npm test` | Unit tests (Vitest): cart, pricing, Stripe session building |
-| `npm run e2e` | Playwright on a mobile viewport. `E2E_BASE_URL=https://… npm run e2e` runs it against a deployed site |
+| `npm run e2e` | Playwright on a mobile viewport. `E2E_BASE_URL=https://… npm run e2e` runs it against a deployed site; add `E2E_STRIPE=1` once that site has Stripe test keys |
 | `npm run typecheck` / `lint` | Types and ESLint |
 | `npm run db:generate` | New migration after editing `src/lib/db/schema.ts` |
 

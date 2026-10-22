@@ -30,7 +30,7 @@ test("cart drawer prices the cart and sends it to checkout", async ({ page }) =>
 });
 
 test("reaches Stripe Checkout in test mode", async ({ page }) => {
-  test.skip(!process.env.E2E_BASE_URL && !process.env.STRIPE_SECRET_KEY, "needs Stripe test keys or a deployed site");
+  test.skip(process.env.E2E_STRIPE !== "1", "set E2E_STRIPE=1 once the target site has Stripe test keys");
   await addShampooToCart(page);
   await page.getByTestId("checkout-button").click();
   await page.waitForURL(/checkout\.stripe\.com/, { timeout: 30_000 });
