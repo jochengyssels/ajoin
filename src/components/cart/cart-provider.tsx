@@ -1,20 +1,10 @@
 "use client";
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
-import { addLine, itemCount, parseCart, removeLine, setQty } from "@/lib/cart/cart";
+import { createContext, useCallback, useContext, useMemo, useState, useSyncExternalStore, type ReactNode } from "react";
+import { addLine, itemCount, removeLine, setQty } from "@/lib/cart/cart";
+import { cartStore, hydration } from "./cart-store";
 import { priceCart, type CatalogueSnapshot, type PricedCart } from "@/lib/cart/pricing";
 import type { Cart, CartLine } from "@/lib/cart/types";
-
-const STORAGE_KEY = "ajoin-cart-v1";
 
 interface CartContextValue {
   cart: Cart;
@@ -34,23 +24,6 @@ interface CartContextValue {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-function readStored(): Cart {
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    return raw ? parseCart(JSON.parse(raw)) : { lines: [] };
-  } catch {
-    return { lines: [] };
-  }
-}
-
-function writeStored(cart: Cart) {
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
-  } catch {
-    // Storage unavailable (private mode, blocked): the cart still works for this visit.
-  }
-}
-
 export function CartProvider({
   children,
   snapshot,
@@ -60,37 +33,19 @@ export function CartProvider({
   snapshot: CatalogueSnapshot;
   freeShippingThresholdCents: number;
 }) {
-  const [cart, setCart] = useState<Cart>({ lines: [] });
-  const [ready, setReady] = useState(false);
+  const cart = useSyncExternalStore(cartStore.subscribe, cartStore.getSnapshot, cartStore.getServerSnapshot);
+  const ready = useSyncExternalStore(hydration.subscribe, hydration.client, hydration.server);
   const [isOpen, setOpen] = useState(false);
-  const loaded = useRef(false);
-
-  useEffect(() => {
-    // Hydrate from storage after mount so server and client markup match.
-    setCart(readStored());
-    setReady(true);
-    loaded.current = true;
-
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY) setCart(readStored());
-    };
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, []);
-
-  useEffect(() => {
-    if (loaded.current) writeStored(cart);
-  }, [cart]);
 
   const priced = useMemo(() => priceCart(cart, snapshot), [cart, snapshot]);
 
   const add = useCallback((line: CartLine) => {
-    setCart((c) => addLine(c, line));
+    cartStore.set((c) => addLine(c, line));
     setOpen(true);
   }, []);
-  const update = useCallback((key: string, qty: number) => setCart((c) => setQty(c, key, qty)), []);
-  const remove = useCallback((key: string) => setCart((c) => removeLine(c, key)), []);
-  const clear = useCallback(() => setCart({ lines: [] }), []);
+  const update = useCallback((key: string, qty: number) => cartStore.set((c) => setQty(c, key, qty)), []);
+  const remove = useCallback((key: string) => cartStore.set((c) => removeLine(c, key)), []);
+  const clear = useCallback(() => cartStore.set(() => ({ lines: [] })), []);
 
   const value = useMemo<CartContextValue>(
     () => ({

@@ -31,7 +31,6 @@ export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => setMenuOpen(false), [pathname]);
   useEffect(() => {
     if (!menuOpen) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
@@ -111,6 +110,7 @@ export function Header() {
                     <Link
                       href={l.href}
                       aria-current={isActive(l.href) ? "page" : undefined}
+                      onClick={() => setMenuOpen(false)}
                       className="flex min-h-12 items-center font-display text-xl aria-[current=page]:text-onion"
                     >
                       {t(l.key)}
@@ -118,12 +118,12 @@ export function Header() {
                   </li>
                 ))}
                 <li>
-                  <Link href="/faq" className="flex min-h-12 items-center font-display text-xl">
+                  <Link href="/faq" onClick={() => setMenuOpen(false)} className="flex min-h-12 items-center font-display text-xl">
                     {t("faq")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="flex min-h-12 items-center font-display text-xl">
+                  <Link href="/contact" onClick={() => setMenuOpen(false)} className="flex min-h-12 items-center font-display text-xl">
                     {t("contact")}
                   </Link>
                 </li>

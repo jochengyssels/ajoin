@@ -2,13 +2,19 @@
 
 import Script from "next/script";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 
 const COOKIE = "ajoin_consent";
 const OPEN_EVENT = "ajoin:open-consent";
 type Choice = "analytics" | "essential";
+
+const consentListeners = new Set<() => void>();
+const subscribeConsent = (l: () => void) => {
+  consentListeners.add(l);
+  return () => consentListeners.delete(l);
+};
 
 function readChoice(): Choice | null {
   const m = document.cookie.match(new RegExp(`(?:^|; )${COOKIE}=([^;]*)`));
@@ -21,6 +27,7 @@ function writeChoice(choice: Choice) {
   document.cookie = `${COOKIE}=${choice}; Max-Age=${maxAge}; Path=/; SameSite=Lax${
     location.protocol === "https:" ? "; Secure" : ""
   }`;
+  consentListeners.forEach((l) => l());
 }
 
 /** Opens the consent banner again, e.g. from the footer's "Cookie settings". */
@@ -41,23 +48,21 @@ const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 export function Consent() {
   const t = useTranslations("consent");
-  const [choice, setChoice] = useState<Choice | null>(null);
-  const [visible, setVisible] = useState(false);
+  // "pending" on the server: render no banner and no scripts until the cookie has been read.
+  const choice = useSyncExternalStore(subscribeConsent, readChoice, () => "pending" as const);
+  const [reopened, setReopened] = useState(false);
+  const visible = choice === null || reopened;
 
   useEffect(() => {
-    const c = readChoice();
-    setChoice(c);
-    setVisible(c === null);
-    const reopen = () => setVisible(true);
+    const reopen = () => setReopened(true);
     window.addEventListener(OPEN_EVENT, reopen);
     return () => window.removeEventListener(OPEN_EVENT, reopen);
   }, []);
 
   function decide(c: Choice) {
-    writeChoice(c);
     const revoked = choice === "analytics" && c === "essential";
-    setChoice(c);
-    setVisible(false);
+    writeChoice(c);
+    setReopened(false);
     // Scripts already loaded can't be unloaded; a reload guarantees they stop.
     if (revoked) location.reload();
   }
